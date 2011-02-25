@@ -66,6 +66,10 @@
 		50F414F11069373D002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414ED1069373D002A0D5E /* fps_images.png */; };
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
 		C9D049EB13173A0D00D800BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D049EA13173A0D00D800BE /* GameKit.framework */; };
+		C9FE049913174A4F007F662D /* KALayerMovementTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FE049813174A4F007F662D /* KALayerMovementTest.m */; };
+		C9FE049C13174AA1007F662D /* KAPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FE049B13174AA1007F662D /* KAPlayer.m */; };
+		C9FE04A913174BDC007F662D /* player_one.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FE04A713174BDC007F662D /* player_one.png */; };
+		C9FE04AC13174BF3007F662D /* player_two.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FE04AB13174BF3007F662D /* player_two.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -318,6 +322,12 @@
 		50F414EE1069373D002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D049EA13173A0D00D800BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		C9FE049713174A4F007F662D /* KALayerMovementTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KALayerMovementTest.h; sourceTree = "<group>"; };
+		C9FE049813174A4F007F662D /* KALayerMovementTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KALayerMovementTest.m; sourceTree = "<group>"; };
+		C9FE049A13174AA1007F662D /* KAPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAPlayer.h; sourceTree = "<group>"; };
+		C9FE049B13174AA1007F662D /* KAPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAPlayer.m; sourceTree = "<group>"; };
+		C9FE04A713174BDC007F662D /* player_one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_one.png; sourceTree = "<group>"; };
+		C9FE04AB13174BF3007F662D /* player_two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_two.png; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -598,6 +608,10 @@
 				E0F80F5F120A0182005866B8 /* RootViewController.m */,
 				1F3B9A2C0EF2145700286867 /* KeepAssaultNetworkTestAppDelegate.h */,
 				1F3B9A2B0EF2145700286867 /* KeepAssaultNetworkTestAppDelegate.m */,
+				C9FE049713174A4F007F662D /* KALayerMovementTest.h */,
+				C9FE049813174A4F007F662D /* KALayerMovementTest.m */,
+				C9FE049A13174AA1007F662D /* KAPlayer.h */,
+				C9FE049B13174AA1007F662D /* KAPlayer.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -707,6 +721,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9FE049D13174B0E007F662D /* Images */,
 				C9FE03F313174241007F662D /* Fonts */,
 				E02BB762126CC1E0006E46A2 /* iTunesArtwork */,
 				E02BB4FE126CA50F006E46A2 /* Icon@2x.png */,
@@ -727,6 +742,15 @@
 			children = (
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		C9FE049D13174B0E007F662D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C9FE04AB13174BF3007F662D /* player_two.png */,
+				C9FE04A713174BDC007F662D /* player_one.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		E02BB764126CC223006E46A2 /* cocos2d */ = {
@@ -1133,6 +1157,8 @@
 				E02BB507126CA50F006E46A2 /* Icon-Small-50.png in Resources */,
 				E02BB508126CA50F006E46A2 /* Icon-72.png in Resources */,
 				E02BB763126CC1E0006E46A2 /* iTunesArtwork in Resources */,
+				C9FE04A913174BDC007F662D /* player_one.png in Resources */,
+				C9FE04AC13174BF3007F662D /* player_two.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1147,6 +1173,8 @@
 				1F3B9A2D0EF2145700286867 /* KeepAssaultNetworkTestAppDelegate.m in Sources */,
 				506EDC31102F528A00A389B3 /* HelloWorldScene.m in Sources */,
 				E0F80F60120A0182005866B8 /* RootViewController.m in Sources */,
+				C9FE049913174A4F007F662D /* KALayerMovementTest.m in Sources */,
+				C9FE049C13174AA1007F662D /* KAPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 // Import the interfaces
 #import "HelloWorldScene.h"
+#import <GameKit/GameKit.h>
+#import "KALayerMovementTest.h"
 
 // HelloWorld implementation
 @implementation HelloWorld
@@ -48,16 +50,18 @@
 		CCMenuItem* joinSession = [CCMenuItemFont itemFromString:@"Join Session"
 														  target:self 
 														selector:@selector(onJoinSession)];
+
+		CCMenuItem* movementTest = [CCMenuItemFont itemFromString:@"Movement Test"
+														  target:self 
+														selector:@selector(onMovementTest)];
 		
 		CCMenu* menu = [CCMenu menuWithItems:createSession,
-											 joinSession, 
+											 joinSession,
+											 movementTest,
 											 nil];
 		
 		[menu alignItemsVerticallyWithPadding:30.0f];
-		[self addChild:menu];
-		
-		
-		
+		[self addChild:menu];		
 	}
 	return self;
 }
@@ -65,10 +69,19 @@
 
 -(void)onCreateSession {
 	NSLog(@"Create session");
+//	session = [GKSession nitWithSessionID:nil displayName:nil sessionMode:GKSessionModeServer];
+
 }
 
 -(void)onJoinSession {
 	NSLog(@"Join session");
+//	session = [GKSession nitWithSessionID:nil displayName:nil sessionMode:GKSessionModeServer];
+}
+
+-(void)onMovementTest {
+	CCScene* newScene = [KALayerMovementTest scene];
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:newScene withColor:ccWHITE]];
+	
 }
 
 
