@@ -35,19 +35,42 @@
 	if( (self=[super init] )) {
 		
 		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-
-		// ask director the the window size
+		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Keep Assault" fontName:@"Helvetica" fontSize:64];
 		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
+		label.position =  ccp(size.width /2 , size.height - 100);
 		[self addChild: label];
+		
+		
+		CCMenuItem* createSession = [CCMenuItemFont itemFromString:@"Create Session" 
+															target:self 
+														  selector:@selector(onCreateSession)];
+
+		CCMenuItem* joinSession = [CCMenuItemFont itemFromString:@"Join Session"
+														  target:self 
+														selector:@selector(onJoinSession)];
+		
+		CCMenu* menu = [CCMenu menuWithItems:createSession,
+											 joinSession, 
+											 nil];
+		
+		[menu alignItemsVerticallyWithPadding:30.0f];
+		[self addChild:menu];
+		
+		
+		
 	}
 	return self;
 }
+
+
+-(void)onCreateSession {
+	NSLog(@"Create session");
+}
+
+-(void)onJoinSession {
+	NSLog(@"Join session");
+}
+
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
