@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 
 @interface KALayerMovementTest : CCLayer {
-	NSMutableDictionary* players;
+	NSMutableArray* players;
 }
 
 +(id)scene;

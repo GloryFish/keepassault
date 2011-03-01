@@ -31,20 +31,20 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
-		players = [[NSMutableDictionary alloc] initWithCapacity:2];
+		players = [[NSMutableArray alloc] initWithCapacity:2];
 		
-		KAPlayer* playerOne = [[KAPlayer alloc] init];
+		KAPlayer* playerOne = [[KAPlayer alloc] initWithIndex:0];
 		playerOne.position = ccp(100, 300);
 		playerOne.velocity = ccp(0, 0);
 		[self addChild:playerOne];
-		[players setObject:playerOne forKey:@"playerOne"];
+		[players addObject:playerOne];
 		[playerOne release];
 		
-		KAPlayer* playerTwo = [[KAPlayer alloc] init];
+		KAPlayer* playerTwo = [[KAPlayer alloc] initWithIndex:1];
 		playerTwo.position = ccp(400, 200);
 		playerTwo.velocity = ccp(0, 0);
 		[self addChild:playerTwo];
-		[players setObject:playerTwo forKey:@"playerTwo"];
+		[players addObject:playerTwo];
 		[playerTwo release];
 		
 

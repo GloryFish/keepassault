@@ -7,15 +7,17 @@
 //
 
 #import "KAPlayer.h"
-
+#import "KAAssetManager.h"
 
 @implementation KAPlayer
 
 @synthesize velocity;
+@synthesize index;
 
--(id)init {
+-(id)initWithIndex:(NSInteger)i {
 	if ( (self = [super init]) ) {
-		sprite = [CCSprite spriteWithFile:@"player_one.png"];
+		index = i;
+		sprite = [[KAAssetManager sharedManager] spriteForPlayerAtIndex:index];
 		[self addChild:sprite];
 		
 		target = ccp(0, 0);

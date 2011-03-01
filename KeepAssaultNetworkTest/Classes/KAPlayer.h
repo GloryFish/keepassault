@@ -15,9 +15,11 @@
 	CGPoint speed;
 	CGPoint target;
 	CCSprite* sprite;
+	NSInteger index;
 }
 
 @property (nonatomic, assign) CGPoint velocity; 
+@property (nonatomic, assign) NSInteger index; 
 
 -(void)setPosition:(CGPoint)pos;
 

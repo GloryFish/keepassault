@@ -66,6 +66,7 @@
 		50F414F11069373D002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414ED1069373D002A0D5E /* fps_images.png */; };
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
 		C9D049EB13173A0D00D800BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D049EA13173A0D00D800BE /* GameKit.framework */; };
+		C9D27C0A131D48980024CD89 /* KAAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D27C09131D48980024CD89 /* KAAssetManager.m */; };
 		C9FE049913174A4F007F662D /* KALayerMovementTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FE049813174A4F007F662D /* KALayerMovementTest.m */; };
 		C9FE049C13174AA1007F662D /* KAPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FE049B13174AA1007F662D /* KAPlayer.m */; };
 		C9FE04A913174BDC007F662D /* player_one.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FE04A713174BDC007F662D /* player_one.png */; };
@@ -322,6 +323,8 @@
 		50F414EE1069373D002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9D049EA13173A0D00D800BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		C9D27C08131D48980024CD89 /* KAAssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAAssetManager.h; sourceTree = "<group>"; };
+		C9D27C09131D48980024CD89 /* KAAssetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAAssetManager.m; sourceTree = "<group>"; };
 		C9FE049713174A4F007F662D /* KALayerMovementTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KALayerMovementTest.h; sourceTree = "<group>"; };
 		C9FE049813174A4F007F662D /* KALayerMovementTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KALayerMovementTest.m; sourceTree = "<group>"; };
 		C9FE049A13174AA1007F662D /* KAPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAPlayer.h; sourceTree = "<group>"; };
@@ -612,6 +615,8 @@
 				C9FE049813174A4F007F662D /* KALayerMovementTest.m */,
 				C9FE049A13174AA1007F662D /* KAPlayer.h */,
 				C9FE049B13174AA1007F662D /* KAPlayer.m */,
+				C9D27C08131D48980024CD89 /* KAAssetManager.h */,
+				C9D27C09131D48980024CD89 /* KAAssetManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1175,6 +1180,7 @@
 				E0F80F60120A0182005866B8 /* RootViewController.m in Sources */,
 				C9FE049913174A4F007F662D /* KALayerMovementTest.m in Sources */,
 				C9FE049C13174AA1007F662D /* KAPlayer.m in Sources */,
+				C9D27C0A131D48980024CD89 /* KAAssetManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
