@@ -10,19 +10,15 @@
 #import "cocos2d.h"
 
 @interface KAPlayer : CCNode {
-	CGPoint velocity;
 	CGPoint movement;
-	CGFloat speed;
+	CGFloat baseSpeed;
 	CGPoint target;
 	CCSprite* sprite;
 	NSInteger index;
 }
 
-@property (nonatomic, assign) CGPoint velocity; 
 @property (nonatomic, assign) CGPoint target; 
 @property (nonatomic, assign) NSInteger index; 
-
--(void)setPosition:(CGPoint)pos;
 
 -(void)update:(ccTime)dt;
 

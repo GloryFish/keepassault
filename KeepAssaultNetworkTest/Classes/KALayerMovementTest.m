@@ -47,10 +47,6 @@
 		[self addChild:playerTwo];
 		[players addObject:playerTwo];
 		[playerTwo release];
-		
-		NSLog(@"pos: %@", NSStringFromCGPoint(self.position));
-		NSLog(@"scale: %f", [CCDirector sharedDirector].contentScaleFactor);
-		NSLog(@"width: %f, height: %f", self.contentSize.width, self.contentSize.height);
 	}
 	return self;
 }
@@ -67,10 +63,9 @@
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
 	CGPoint location = [self convertTouchToNodeSpace:touch];
 	location = [self convertToWorldSpace:location];
-	NSLog(@"Touch: %@", NSStringFromCGPoint(location));
-	
+
 	KAPlayer* playerOne = [players objectAtIndex:0];
-	playerOne.position = location;
+	playerOne.target = location;
 	
 	return YES;
 }
@@ -78,11 +73,9 @@
 -(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
 	CGPoint location = [self convertTouchToNodeSpace:touch];
 	location = [self convertToWorldSpace:location];
-	NSLog(@"Touch: %@", NSStringFromCGPoint(location));
 	
 	KAPlayer* playerOne = [players objectAtIndex:0];
-	playerOne.position = location;
-
+	playerOne.target = location;
 }
 
 @end

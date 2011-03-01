@@ -11,7 +11,6 @@
 
 @implementation KAPlayer
 
-@synthesize velocity;
 @synthesize target;
 @synthesize index;
 
@@ -23,10 +22,8 @@
 		
 		target = ccp(0, 0);
 		movement = ccp(0, 0);
-		velocity = ccp(0, 0);
 
-		
-		speed = 64.0f;
+		baseSpeed = 128.0f;
 
 		[self scheduleUpdate];
 	}
@@ -34,13 +31,22 @@
 }
 
 -(void)update:(ccTime)dt {
-//	CGPoint direction = ccpNormalize(ccpSub(target, self.position));
-//	
-//	velocity = ccpMult(direction, speed);
-//	velocity = ccpMult(velocity, dt);
-//	
-//	self.position = ccpAdd(self.position, velocity);
+	CGPoint direction = CGPointZero;
+	
+	if (ccpFuzzyEqual(target, self.position, 0.8)) {
+		// Close enough
+		self.position = target;
+	} else {
+		direction = ccpSub(target, self.position);
+		direction = ccpNormalize(direction);
+	}
+	
+	CGPoint velocity = ccpMult(direction, baseSpeed);
+	velocity = ccpMult(velocity, dt);
+	
+	self.position = ccpAdd(self.position, velocity);
 }
+
 
 
 @end
