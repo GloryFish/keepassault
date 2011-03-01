@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface KALayerMovementTest : CCLayer {
+@interface KALayerMovementTest : CCLayer <CCTargetedTouchDelegate> {
 	NSMutableArray* players;
 }
 
 +(id)scene;
+
+-(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
+-(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event;
 
 @end

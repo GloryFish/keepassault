@@ -8,6 +8,7 @@
 
 #import "KALayerMovementTest.h"
 #import "KAPlayer.h"
+#import "CCTouchDispatcher.h"
 
 @implementation KALayerMovementTest
 
@@ -26,30 +27,62 @@
 }
 
 
-// on "init" you need to initialize your instance
 -(id) init {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
+		self.isTouchEnabled = YES;
+		self.anchorPoint = ccp(0, 0);
+		
 		players = [[NSMutableArray alloc] initWithCapacity:2];
 		
 		KAPlayer* playerOne = [[KAPlayer alloc] initWithIndex:0];
-		playerOne.position = ccp(100, 300);
-		playerOne.velocity = ccp(0, 0);
+		playerOne.position = ccp(0, 0);
+		playerOne.target = playerOne.position;
 		[self addChild:playerOne];
 		[players addObject:playerOne];
 		[playerOne release];
 		
 		KAPlayer* playerTwo = [[KAPlayer alloc] initWithIndex:1];
-		playerTwo.position = ccp(400, 200);
-		playerTwo.velocity = ccp(0, 0);
+		playerTwo.position = ccp(512, 384);
+		playerTwo.target = playerTwo.position;
 		[self addChild:playerTwo];
 		[players addObject:playerTwo];
 		[playerTwo release];
 		
-
+		NSLog(@"pos: %@", NSStringFromCGPoint(self.position));
+		NSLog(@"scale: %f", [CCDirector sharedDirector].contentScaleFactor);
+		NSLog(@"width: %f, height: %f", self.contentSize.width, self.contentSize.height);
 	}
 	return self;
+}
+
+
+#pragma mark -
+#pragma mark CCTargetedTouchDelegate
+
+
+-(void)registerWithTouchDispatcher {
+	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+-(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+	CGPoint location = [self convertTouchToNodeSpace:touch];
+	location = [self convertToWorldSpace:location];
+	NSLog(@"Touch: %@", NSStringFromCGPoint(location));
+	
+	KAPlayer* playerOne = [players objectAtIndex:0];
+	playerOne.position = location;
+	
+	return YES;
+}
+
+-(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+	CGPoint location = [self convertTouchToNodeSpace:touch];
+	location = [self convertToWorldSpace:location];
+	NSLog(@"Touch: %@", NSStringFromCGPoint(location));
+	
+	KAPlayer* playerOne = [players objectAtIndex:0];
+	playerOne.position = location;
+
 }
 
 @end

@@ -12,6 +12,7 @@
 @implementation KAPlayer
 
 @synthesize velocity;
+@synthesize target;
 @synthesize index;
 
 -(id)initWithIndex:(NSInteger)i {
@@ -21,20 +22,24 @@
 		[self addChild:sprite];
 		
 		target = ccp(0, 0);
-		speed = ccp(64, 64);
 		movement = ccp(0, 0);
+		velocity = ccp(0, 0);
+
 		
+		speed = 64.0f;
+
 		[self scheduleUpdate];
 	}
 	return self;
 }
 
--(void)setPosition:(CGPoint)pos {
-	super.position = pos;
-	sprite.position = pos;
-}
-
 -(void)update:(ccTime)dt {
+//	CGPoint direction = ccpNormalize(ccpSub(target, self.position));
+//	
+//	velocity = ccpMult(direction, speed);
+//	velocity = ccpMult(velocity, dt);
+//	
+//	self.position = ccpAdd(self.position, velocity);
 }
 
 

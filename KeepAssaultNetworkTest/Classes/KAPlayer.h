@@ -12,13 +12,14 @@
 @interface KAPlayer : CCNode {
 	CGPoint velocity;
 	CGPoint movement;
-	CGPoint speed;
+	CGFloat speed;
 	CGPoint target;
 	CCSprite* sprite;
 	NSInteger index;
 }
 
 @property (nonatomic, assign) CGPoint velocity; 
+@property (nonatomic, assign) CGPoint target; 
 @property (nonatomic, assign) NSInteger index; 
 
 -(void)setPosition:(CGPoint)pos;
