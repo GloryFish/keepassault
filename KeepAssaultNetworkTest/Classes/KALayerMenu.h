@@ -12,9 +12,9 @@
 #import <GameKit/GameKit.h>
 
 // HelloWorld Layer
-@interface KALayerMenu : CCLayer {
+@interface KALayerMenu : CCLayer <GKMatchmakerViewControllerDelegate> {
 	GKSession* gameSession;
-	
+	UIViewController* tempVC;
 }
 
 // returns a Scene that contains the HelloWorld as the only child

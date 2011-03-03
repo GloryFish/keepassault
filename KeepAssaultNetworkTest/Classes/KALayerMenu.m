@@ -35,6 +35,39 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
+		[[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) {
+			if (error == nil) {
+				[GKMatchmaker sharedMatchmaker].inviteHandler = ^(GKInvite *acceptedInvite, NSArray *playersToInvite) {
+					// Insert application-specific code here to clean up any games in progress.
+					if (acceptedInvite) {
+						GKMatchmakerViewController *mmvc = [[[GKMatchmakerViewController alloc] initWithInvite:acceptedInvite] autorelease];
+						mmvc.matchmakerDelegate = self;
+
+						tempVC=[[UIViewController alloc] init];
+						[[[CCDirector sharedDirector] openGLView] addSubview:tempVC.view];
+						[tempVC presentModalViewController:mmvc animated:YES];
+						
+					} else if (playersToInvite) {
+						GKMatchRequest *request = [[[GKMatchRequest alloc] init] autorelease];
+						request.minPlayers = 2;
+						request.maxPlayers = 2;
+						request.playersToInvite = playersToInvite;
+						
+						GKMatchmakerViewController *mmvc = [[[GKMatchmakerViewController alloc] initWithMatchRequest:request] autorelease];
+						mmvc.matchmakerDelegate = self;
+
+						tempVC=[[UIViewController alloc] init];
+						[[[CCDirector sharedDirector] openGLView] addSubview:tempVC.view];
+						[tempVC presentModalViewController:mmvc animated:YES];
+						
+					}
+				};
+				
+			} else {
+				// Your application can process the error parameter to report the error to the player.
+			}
+		}];
+		
 		
 		// create and initialize a Label
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Keep Assault" fontName:@"Helvetica" fontSize:64];
@@ -47,9 +80,9 @@
 															target:self 
 														  selector:@selector(onSinglePlayer)];
 
-		CCMenuItem* multiPlayer = [CCMenuItemFont itemFromString:@"Join Session"
+		CCMenuItem* multiPlayer = [CCMenuItemFont itemFromString:@"Start match"
 														  target:self 
-														selector:@selector(onMultiplayer)];
+														selector:@selector(onStartMatch)];
 
 		
 		CCMenu* menu = [CCMenu menuWithItems:singlePlayer,
@@ -57,7 +90,7 @@
 											 nil];
 		
 		[menu alignItemsVerticallyWithPadding:30.0f];
-		[self addChild:menu];		
+		[self addChild:menu];
 	}
 	return self;
 }
@@ -73,13 +106,49 @@
 }
 
 
--(void)onMultiplayer {
-	NSLog(@"Create session");
+-(void)onStartMatch {
+    GKMatchRequest *request = [[[GKMatchRequest alloc] init] autorelease];
+    request.minPlayers = 2;
+    request.maxPlayers = 2;
+	
+    GKMatchmakerViewController *mmvc = [[[GKMatchmakerViewController alloc] initWithMatchRequest:request] autorelease];
+    mmvc.matchmakerDelegate = self;
+
+	tempVC = [[UIViewController alloc] init] ;
+	[[[CCDirector sharedDirector] openGLView] addSubview:tempVC.view];
+	[tempVC presentModalViewController:mmvc animated:YES];
 }
 
 
+
+#pragma mark -
+#pragma mark GKMatchmakerViewControllerDelegate
+
+- (void)matchmakerViewControllerWasCancelled:(GKMatchmakerViewController *)viewController {
+	[viewController dismissModalViewControllerAnimated:YES];
+	[tempVC.view removeFromSuperview];
+}
+
+- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFailWithError:(NSError *)error {
+	NSLog(@"Matchmaking failed: %@", error);
+	[viewController dismissModalViewControllerAnimated:YES];
+	[tempVC.view removeFromSuperview];
+}
+
+- (void)matchmakerViewController:(GKMatchmakerViewController *)viewController didFindMatch:(GKMatch *)match {
+    [viewController dismissModalViewControllerAnimated:YES];
+	[tempVC.view removeFromSuperview];
+//    GKMatch* myMatch = match; // Use a retaining property to retain the match.
+	NSLog(@"Found match");
+}
+
 #pragma mark -
 #pragma mark Memory management
+
+-(void)onExit {
+	[super onExit];
+	[tempVC release];
+}
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
