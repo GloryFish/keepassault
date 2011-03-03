@@ -17,6 +17,4 @@
 
 @property (nonatomic, retain) UIWindow *window;
 
--(void)authenticateLocalPlayer;
-
 @end

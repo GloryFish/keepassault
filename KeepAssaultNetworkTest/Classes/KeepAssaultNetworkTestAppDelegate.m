@@ -13,8 +13,6 @@
 #import "HelloWorldScene.h"
 #import "RootViewController.h"
 
-#import <GameKit/GameKit.h>
-
 @implementation KeepAssaultNetworkTestAppDelegate
 
 @synthesize window;
@@ -113,8 +111,6 @@
 	
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [HelloWorld scene]];		
-	
-	[self authenticateLocalPlayer];
 }
 
 
@@ -149,19 +145,6 @@
 	
 	[director end];	
 }
-
-- (void) authenticateLocalPlayer {
-    [[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) {
-		if (error == nil) {
-			// Insert code here to handle a successful authentication.
-			NSLog(@"Logged into Game Center");
-		} else {
-			// Your application can process the error parameter to report the error to the player.
-			NSLog(@"Failed to log into Game Center: %@", error);
-		}
-	}];
-}
-
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];

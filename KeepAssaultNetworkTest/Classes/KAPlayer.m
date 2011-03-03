@@ -12,13 +12,20 @@
 @implementation KAPlayer
 
 @synthesize target;
-@synthesize index;
+@synthesize playerID;
+@synthesize name;
 
--(id)initWithIndex:(NSInteger)i {
+-(id)initWithID:(NSString*)pID {
 	if ( (self = [super init]) ) {
-		index = i;
-		sprite = [[KAAssetManager sharedManager] spriteForPlayerAtIndex:index];
+		playerID = pID;
+		sprite = [[KAAssetManager sharedManager] spriteForPlayerAtIndex:0];
 		[self addChild:sprite];
+		
+		name = @"Default";
+		
+		playerName = [CCLabelTTF labelWithString:name fontName:@"Helvetica" fontSize:24];
+		playerName.position = ccp(0, -70);
+		[self addChild:playerName];
 		
 		target = ccp(0, 0);
 		movement = ccp(0, 0);
@@ -29,6 +36,15 @@
 	}
 	return self;
 }
+
+-(void)setName:(NSString*)n {
+	[name autorelease];
+	name = [n retain];
+	
+	playerName.string = name;
+}
+								
+
 
 -(void)update:(ccTime)dt {
 	CGPoint direction = CGPointZero;

@@ -65,6 +65,7 @@
 		50F414F01069373D002A0D5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EC1069373D002A0D5E /* Default.png */; };
 		50F414F11069373D002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414ED1069373D002A0D5E /* fps_images.png */; };
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
+		C9BFE70B131DDB3F00F9DB88 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BFE70A131DDB3F00F9DB88 /* GameKitHelper.m */; };
 		C9D049EB13173A0D00D800BE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D049EA13173A0D00D800BE /* GameKit.framework */; };
 		C9D27C0A131D48980024CD89 /* KAAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D27C09131D48980024CD89 /* KAAssetManager.m */; };
 		C9FE049913174A4F007F662D /* KALayerMovementTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FE049813174A4F007F662D /* KALayerMovementTest.m */; };
@@ -322,6 +323,9 @@
 		50F414ED1069373D002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F414EE1069373D002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BFE709131DDB3F00F9DB88 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
+		C9BFE70A131DDB3F00F9DB88 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
+		C9BFE70C131DDB8600F9DB88 /* KANetworkPackets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KANetworkPackets.h; sourceTree = "<group>"; };
 		C9D049EA13173A0D00D800BE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		C9D27C08131D48980024CD89 /* KAAssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAAssetManager.h; sourceTree = "<group>"; };
 		C9D27C09131D48980024CD89 /* KAAssetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAAssetManager.m; sourceTree = "<group>"; };
@@ -604,6 +608,9 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9BFE70C131DDB8600F9DB88 /* KANetworkPackets.h */,
+				C9BFE709131DDB3F00F9DB88 /* GameKitHelper.h */,
+				C9BFE70A131DDB3F00F9DB88 /* GameKitHelper.m */,
 				E0F80F5D120A0182005866B8 /* GameConfig.h */,
 				506EDC2F102F528A00A389B3 /* HelloWorldScene.h */,
 				506EDC30102F528A00A389B3 /* HelloWorldScene.m */,
@@ -1181,6 +1188,7 @@
 				C9FE049913174A4F007F662D /* KALayerMovementTest.m in Sources */,
 				C9FE049C13174AA1007F662D /* KAPlayer.m in Sources */,
 				C9D27C0A131D48980024CD89 /* KAAssetManager.m in Sources */,
+				C9BFE70B131DDB3F00F9DB88 /* GameKitHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,14 +37,5 @@
 	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
-	<key>UIRequiredDeviceCapabilities</key>
-	<dict>
-		<key>gamekit</key>
-		<true/>
-		<key>accelerometer</key>
-		<true/>
-		<key>opengles-1</key>
-		<false/>
-	</dict>
 </dict>
 </plist>

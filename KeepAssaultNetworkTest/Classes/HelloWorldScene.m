@@ -10,6 +10,7 @@
 #import "HelloWorldScene.h"
 #import <GameKit/GameKit.h>
 #import "KALayerMovementTest.h"
+#import "GameKitHelper.h"
 
 // HelloWorld implementation
 @implementation HelloWorld
@@ -36,6 +37,10 @@
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
 		
+		GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+		gkHelper.delegate = self;
+		[gkHelper authenticateLocalPlayer];
+		
 		// create and initialize a Label
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Keep Assault" fontName:@"Helvetica" fontSize:64];
 		CGSize size = [[CCDirector sharedDirector] winSize];
@@ -43,21 +48,17 @@
 		[self addChild: label];
 		
 		
-		CCMenuItem* createSession = [CCMenuItemFont itemFromString:@"Create Session" 
+		CCMenuItem* singlePlayer = [CCMenuItemFont itemFromString:@"Single Player" 
 															target:self 
-														  selector:@selector(onCreateSession)];
+														  selector:@selector(onSinglePlayer)];
 
-		CCMenuItem* joinSession = [CCMenuItemFont itemFromString:@"Join Session"
+		CCMenuItem* multiPlayer = [CCMenuItemFont itemFromString:@"Join Session"
 														  target:self 
-														selector:@selector(onJoinSession)];
+														selector:@selector(onMultiplayer)];
 
-		CCMenuItem* movementTest = [CCMenuItemFont itemFromString:@"Movement Test"
-														  target:self 
-														selector:@selector(onMovementTest)];
 		
-		CCMenu* menu = [CCMenu menuWithItems:createSession,
-											 joinSession,
-											 movementTest,
+		CCMenu* menu = [CCMenu menuWithItems:singlePlayer,
+											 multiPlayer,
 											 nil];
 		
 		[menu alignItemsVerticallyWithPadding:30.0f];
@@ -66,24 +67,137 @@
 	return self;
 }
 
-
--(void)onCreateSession {
-	NSLog(@"Create session");
-//	session = [GKSession nitWithSessionID:nil displayName:nil sessionMode:GKSessionModeServer];
-
-}
-
--(void)onJoinSession {
-	NSLog(@"Join session");
-//	session = [GKSession nitWithSessionID:nil displayName:nil sessionMode:GKSessionModeServer];
-}
-
--(void)onMovementTest {
-	CCScene* newScene = [KALayerMovementTest scene];
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:newScene withColor:ccWHITE]];
+-(void)onSinglePlayer {
+	KALayerMovementTest* layer = [KALayerMovementTest node];
+	[layer setupSingleplayer];
 	
+	CCScene* newScene = [CCScene node];
+	[newScene addChild:layer];
+	
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:newScene withColor:ccWHITE]];
 }
 
+
+-(void)onMultiplayer {
+	NSLog(@"Create session");
+}
+
+#pragma mark GameKitHelper delegate methods
+-(void) onLocalPlayerAuthenticationChanged
+{
+	GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+	CCLOG(@"LocalPlayer isAuthenticated changed to: %@", localPlayer.authenticated ? @"YES" : @"NO");
+	
+	if (localPlayer.authenticated)
+	{
+		GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+		[gkHelper getLocalPlayerFriends];
+		//[gkHelper resetAchievements];
+	}	
+}
+
+-(void) onFriendListReceived:(NSArray*)friends
+{
+	CCLOG(@"onFriendListReceived: %@", [friends description]);
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+	[gkHelper getPlayerInfo:friends];
+}
+
+-(void) onPlayerInfoReceived:(NSArray*)players
+{
+	CCLOG(@"onPlayerInfoReceived: %@", [players description]);
+	GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+	[gkHelper submitScore:1234 category:@"Playtime"];
+	
+	//[gkHelper showLeaderboard];
+	
+	GKMatchRequest* request = [[[GKMatchRequest alloc] init] autorelease];
+	request.minPlayers = 2;
+	request.maxPlayers = 2;
+	
+	//GameKitHelper* gkHelper = [GameKitHelper sharedGameKitHelper];
+	[gkHelper showMatchmakerWithRequest:request];
+	[gkHelper queryMatchmakingActivity];
+}
+
+-(void) onScoresSubmitted:(bool)success
+{
+	CCLOG(@"onScoresSubmitted: %@", success ? @"YES" : @"NO");
+}
+
+-(void) onScoresReceived:(NSArray*)scores
+{
+	CCLOG(@"onScoresReceived: %@", [scores description]);
+}
+
+-(void) onAchievementReported:(GKAchievement*)achievement
+{
+	CCLOG(@"onAchievementReported: %@", achievement);
+}
+
+-(void) onAchievementsLoaded:(NSDictionary*)achievements
+{
+	CCLOG(@"onLocalPlayerAchievementsLoaded: %@", [achievements description]);
+}
+
+-(void) onResetAchievements:(bool)success
+{
+	CCLOG(@"onResetAchievements: %@", success ? @"YES" : @"NO");
+}
+
+-(void) onLeaderboardViewDismissed
+{
+	CCLOG(@"onLeaderboardViewDismissed");
+}
+
+-(void) onAchievementsViewDismissed
+{
+	CCLOG(@"onAchievementsViewDismissed");
+}
+
+-(void) onReceivedMatchmakingActivity:(NSInteger)activity
+{
+	CCLOG(@"receivedMatchmakingActivity: %i", activity);
+}
+
+-(void) onMatchFound:(GKMatch*)match
+{
+	CCLOG(@"onMatchFound: %@", match);
+}
+
+-(void) onPlayersAddedToMatch:(bool)success
+{
+	CCLOG(@"onPlayersAddedToMatch: %@", success ? @"YES" : @"NO");
+}
+
+-(void) onMatchmakingViewDismissed
+{
+	CCLOG(@"onMatchmakingViewDismissed");
+}
+-(void) onMatchmakingViewError
+{
+	CCLOG(@"onMatchmakingViewError");
+}
+
+-(void) onPlayerConnected:(NSString*)playerID
+{
+	CCLOG(@"onPlayerConnected: %@", playerID);
+}
+
+-(void) onPlayerDisconnected:(NSString*)playerID
+{
+	CCLOG(@"onPlayerDisconnected: %@", playerID);
+}
+
+-(void) onStartMatch
+{
+	CCLOG(@"onStartMatch");
+}
+
+
+
+#pragma mark -
+#pragma mark Memory management
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc

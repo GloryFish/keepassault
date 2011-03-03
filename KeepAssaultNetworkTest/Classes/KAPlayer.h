@@ -14,12 +14,16 @@
 	CGFloat baseSpeed;
 	CGPoint target;
 	CCSprite* sprite;
-	NSInteger index;
+	CCLabelTTF* playerName;
+	NSString* playerID;
+	NSString* name;
 }
 
 @property (nonatomic, assign) CGPoint target; 
-@property (nonatomic, assign) NSInteger index; 
+@property (nonatomic, assign) NSString* playerID; 
+@property (nonatomic, retain) NSString* name; 
 
+-(id)initWithID:(NSString*)pID;
 -(void)update:(ccTime)dt;
 
 
