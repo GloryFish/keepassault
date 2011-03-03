@@ -9,9 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import <GameKit/GameKit.h>
-#import "GameKitHelper.h"
 
-@interface KALayerMovementTest : CCLayer <CCTargetedTouchDelegate, GameKitHelperProtocol> {
+@interface KALayerMovementTest : CCLayer <CCTargetedTouchDelegate> {
 	NSMutableDictionary* players;
 
 	NSString* localPlayerID;
@@ -32,7 +31,6 @@
 -(void)setupMultiplayer;
 
 -(void)update:(ccTime)dt;
--(void)sendHeartbeat;
   
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event;
 -(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event;

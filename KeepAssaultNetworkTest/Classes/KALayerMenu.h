@@ -10,10 +10,9 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 #import <GameKit/GameKit.h>
-#import "GameKitHelper.h"
 
 // HelloWorld Layer
-@interface HelloWorld : CCLayer <GameKitHelperProtocol> {
+@interface KALayerMenu : CCLayer {
 	GKSession* gameSession;
 	
 }

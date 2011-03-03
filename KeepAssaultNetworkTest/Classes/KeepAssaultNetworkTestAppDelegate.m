@@ -10,7 +10,7 @@
 
 #import "KeepAssaultNetworkTestAppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldScene.h"
+#import "KALayerMenu.h"
 #import "RootViewController.h"
 
 @implementation KeepAssaultNetworkTestAppDelegate
@@ -110,7 +110,7 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [HelloWorld scene]];		
+	[[CCDirector sharedDirector] runWithScene: [KALayerMenu scene]];		
 }
 
 
