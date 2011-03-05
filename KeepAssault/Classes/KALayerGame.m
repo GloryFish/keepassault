@@ -6,10 +6,10 @@
 //  Copyright 2011 GloryFish.org. All rights reserved.
 //
 
-#import "KALayerTilemapTest.h"
+#import "KALayerGame.h"
 #import "KALevel.h"
 
-@implementation KALayerTilemapTest
+@implementation KALayerGame
 
 -(id)init {
 	if ( (self = [super init]) ) {
