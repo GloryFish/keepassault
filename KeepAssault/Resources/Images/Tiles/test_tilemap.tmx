@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="24" tilewidth="16" tileheight="16">
+ <properties>
+  <property name="name" value="test"/>
+ </properties>
+ <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16">
+  <image source="tileset.png" width="512" height="512"/>
+  <tile id="0">
+   <properties>
+    <property name="walkable" value="no"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="walkable" value="yes"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Floor and walls" width="32" height="24">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA8VUyQ2AMAxr2X9ovgjFV1LEw0KFENs5utda+2dcBOr7BE/+t57qedpzxff2vYt37Mzq5fCzGEdHxT/JndRe8SM9rrZkppQmxYG0nfCv6trZQcVf5Uf9r+KSnrJYxc/+YbVK+N35U7lZDOvplD/RONk/J3eHX+1Y0n90b7DcXX4HqkaObjSzLpDHbv0nUByKP/WO6oD2wPXfObve1Kx0dSgvbG+mqPhZ/7+Ayn3acwc3Vit8ngAMAAA=
+  </data>
+ </layer>
+</map>

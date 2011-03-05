@@ -65,6 +65,9 @@
 		50F414F01069373D002A0D5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EC1069373D002A0D5E /* Default.png */; };
 		50F414F11069373D002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414ED1069373D002A0D5E /* fps_images.png */; };
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
+		C9859A5E1322E84F00FAB918 /* test_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */; };
+		C9859A5F1322E84F00FAB918 /* tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = C9859A5D1322E84F00FAB918 /* tileset.png */; };
+		C9859A631322E88200FAB918 /* KALayerTilemapTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859A621322E88200FAB918 /* KALayerTilemapTest.m */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -316,6 +319,10 @@
 		50F414ED1069373D002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F414EE1069373D002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test_tilemap.tmx; path = Images/Tiles/test_tilemap.tmx; sourceTree = "<group>"; };
+		C9859A5D1322E84F00FAB918 /* tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tileset.png; path = Images/Tiles/tileset.png; sourceTree = "<group>"; };
+		C9859A611322E88200FAB918 /* KALayerTilemapTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KALayerTilemapTest.h; sourceTree = "<group>"; };
+		C9859A621322E88200FAB918 /* KALayerTilemapTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KALayerTilemapTest.m; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -587,6 +594,7 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9859A601322E86600FAB918 /* TilemapTesting */,
 				E0F80F5D120A0182005866B8 /* GameConfig.h */,
 				506EDC2F102F528A00A389B3 /* HelloWorldScene.h */,
 				506EDC30102F528A00A389B3 /* HelloWorldScene.m */,
@@ -703,6 +711,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9859A5A1322E83B00FAB918 /* Images */,
 				E02BB762126CC1E0006E46A2 /* iTunesArtwork */,
 				E02BB4FE126CA50F006E46A2 /* Icon@2x.png */,
 				E02BB4FF126CA50F006E46A2 /* Icon-Small@2x.png */,
@@ -715,6 +724,32 @@
 				50F414EF1069373D002A0D5E /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C9859A5A1322E83B00FAB918 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C9859A5B1322E84000FAB918 /* Tiles */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		C9859A5B1322E84000FAB918 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */,
+				C9859A5D1322E84F00FAB918 /* tileset.png */,
+			);
+			name = Tiles;
+			sourceTree = "<group>";
+		};
+		C9859A601322E86600FAB918 /* TilemapTesting */ = {
+			isa = PBXGroup;
+			children = (
+				C9859A611322E88200FAB918 /* KALayerTilemapTest.h */,
+				C9859A621322E88200FAB918 /* KALayerTilemapTest.m */,
+			);
+			name = TilemapTesting;
 			sourceTree = "<group>";
 		};
 		E02BB764126CC223006E46A2 /* cocos2d */ = {
@@ -1121,6 +1156,8 @@
 				E02BB507126CA50F006E46A2 /* Icon-Small-50.png in Resources */,
 				E02BB508126CA50F006E46A2 /* Icon-72.png in Resources */,
 				E02BB763126CC1E0006E46A2 /* iTunesArtwork in Resources */,
+				C9859A5E1322E84F00FAB918 /* test_tilemap.tmx in Resources */,
+				C9859A5F1322E84F00FAB918 /* tileset.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1135,6 +1172,7 @@
 				1F3B9A2D0EF2145700286867 /* KeepAssaultAppDelegate.m in Sources */,
 				506EDC31102F528A00A389B3 /* HelloWorldScene.m in Sources */,
 				E0F80F60120A0182005866B8 /* RootViewController.m in Sources */,
+				C9859A631322E88200FAB918 /* KALayerTilemapTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

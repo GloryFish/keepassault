@@ -10,7 +10,7 @@
 
 #import "KeepAssaultAppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldScene.h"
+#import "KALayerTilemapTest.h"
 #import "RootViewController.h"
 
 @implementation KeepAssaultAppDelegate
@@ -109,8 +109,11 @@
 	// Removes the startup flicker
 	[self removeStartupFlicker];
 	
+	CCScene* scene = [CCScene node];
+	[scene addChild:[KALayerTilemapTest node]];
+	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [HelloWorld scene]];		
+	[[CCDirector sharedDirector] runWithScene:scene];
 }
 
 
