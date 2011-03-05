@@ -26,7 +26,7 @@
 			[self loadFloors];
 			
 			if ([floors count] != 0) {
-				[self addChild:[floors objectAtIndex:0] z:0 tag:kCurrentFloor]; // By default, begin with the first floor in the level
+				[self setCurrentFloor:0];
 			} else {
 				NSLog(@"No floors specified in levelDesciption.");
 			}
@@ -78,9 +78,25 @@
 	}
 }
 
+
+#pragma mark -
+#pragma mark Floor managemnt
+
+-(void)setCurrentFloor:(NSInteger)currentFloor {
+	KAFloor* newFloor = [floors objectAtIndex:currentFloor];
+	
+	if (newFloor == nil) {
+		return;
+	}
+	
+	[self removeChildByTag:kCurrentFloor cleanup:YES];
+	[self addChild:newFloor z:0 tag:kCurrentFloor];
+}
+
+
 -(void)onExit {
 	[levelDescription release];
 	[floors release];
 }
-									
+
 @end

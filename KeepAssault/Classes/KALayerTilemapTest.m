@@ -15,7 +15,6 @@
 	if ( (self = [super init]) ) {
 		KALevel* level = [KALevel levelNamed:@"test"];
 		[self addChild:level];
-		
 	}
 	return self;
 }

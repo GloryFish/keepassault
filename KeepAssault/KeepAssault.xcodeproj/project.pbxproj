@@ -71,6 +71,7 @@
 		C9859A741322EEAC00FAB918 /* KALevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859A731322EEAC00FAB918 /* KALevel.m */; };
 		C9859A861322F41100FAB918 /* KAFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859A851322F41100FAB918 /* KAFloor.m */; };
 		C9859ACA1322FABE00FAB918 /* test.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9859A761322F00800FAB918 /* test.plist */; };
+		C9859B161323002500FAB918 /* caves_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C9859B151323002500FAB918 /* caves_tilemap.tmx */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -331,6 +332,7 @@
 		C9859A761322F00800FAB918 /* test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = test.plist; sourceTree = "<group>"; };
 		C9859A841322F41100FAB918 /* KAFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAFloor.h; sourceTree = "<group>"; };
 		C9859A851322F41100FAB918 /* KAFloor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAFloor.m; sourceTree = "<group>"; };
+		C9859B151323002500FAB918 /* caves_tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = caves_tilemap.tmx; path = Images/Tiles/caves_tilemap.tmx; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -746,6 +748,7 @@
 		C9859A5B1322E84000FAB918 /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
+				C9859B151323002500FAB918 /* caves_tilemap.tmx */,
 				C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */,
 				C9859A5D1322E84F00FAB918 /* tileset.png */,
 			);
@@ -1180,6 +1183,7 @@
 				C9859A5E1322E84F00FAB918 /* test_tilemap.tmx in Resources */,
 				C9859A5F1322E84F00FAB918 /* tileset.png in Resources */,
 				C9859ACA1322FABE00FAB918 /* test.plist in Resources */,
+				C9859B161323002500FAB918 /* caves_tilemap.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

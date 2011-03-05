@@ -22,4 +22,7 @@
 -(void)loadLevelFile:(NSString*)levelname;
 -(void)loadFloors;
 
+
+-(void)setCurrentFloor:(NSInteger)currentFloor;
+
 @end
