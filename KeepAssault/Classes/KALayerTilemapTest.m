@@ -7,15 +7,14 @@
 //
 
 #import "KALayerTilemapTest.h"
-
+#import "KALevel.h"
 
 @implementation KALayerTilemapTest
 
 -(id)init {
 	if ( (self = [super init]) ) {
-		CCTMXTiledMap* tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"test_tilemap.tmx"];
-		tileMap.scale = 2;
-		[self addChild:tileMap];
+		KALevel* level = [KALevel levelNamed:@"test"];
+		[self addChild:level];
 		
 	}
 	return self;

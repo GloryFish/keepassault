@@ -68,6 +68,9 @@
 		C9859A5E1322E84F00FAB918 /* test_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */; };
 		C9859A5F1322E84F00FAB918 /* tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = C9859A5D1322E84F00FAB918 /* tileset.png */; };
 		C9859A631322E88200FAB918 /* KALayerTilemapTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859A621322E88200FAB918 /* KALayerTilemapTest.m */; };
+		C9859A741322EEAC00FAB918 /* KALevel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859A731322EEAC00FAB918 /* KALevel.m */; };
+		C9859A861322F41100FAB918 /* KAFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859A851322F41100FAB918 /* KAFloor.m */; };
+		C9859ACA1322FABE00FAB918 /* test.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9859A761322F00800FAB918 /* test.plist */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -323,6 +326,11 @@
 		C9859A5D1322E84F00FAB918 /* tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tileset.png; path = Images/Tiles/tileset.png; sourceTree = "<group>"; };
 		C9859A611322E88200FAB918 /* KALayerTilemapTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KALayerTilemapTest.h; sourceTree = "<group>"; };
 		C9859A621322E88200FAB918 /* KALayerTilemapTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KALayerTilemapTest.m; sourceTree = "<group>"; };
+		C9859A721322EEAC00FAB918 /* KALevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KALevel.h; sourceTree = "<group>"; };
+		C9859A731322EEAC00FAB918 /* KALevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KALevel.m; sourceTree = "<group>"; };
+		C9859A761322F00800FAB918 /* test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = test.plist; sourceTree = "<group>"; };
+		C9859A841322F41100FAB918 /* KAFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAFloor.h; sourceTree = "<group>"; };
+		C9859A851322F41100FAB918 /* KAFloor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAFloor.m; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -711,6 +719,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9859A751322EFEB00FAB918 /* Levels */,
 				C9859A5A1322E83B00FAB918 /* Images */,
 				E02BB762126CC1E0006E46A2 /* iTunesArtwork */,
 				E02BB4FE126CA50F006E46A2 /* Icon@2x.png */,
@@ -748,8 +757,20 @@
 			children = (
 				C9859A611322E88200FAB918 /* KALayerTilemapTest.h */,
 				C9859A621322E88200FAB918 /* KALayerTilemapTest.m */,
+				C9859A721322EEAC00FAB918 /* KALevel.h */,
+				C9859A731322EEAC00FAB918 /* KALevel.m */,
+				C9859A841322F41100FAB918 /* KAFloor.h */,
+				C9859A851322F41100FAB918 /* KAFloor.m */,
 			);
 			name = TilemapTesting;
+			sourceTree = "<group>";
+		};
+		C9859A751322EFEB00FAB918 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				C9859A761322F00800FAB918 /* test.plist */,
+			);
+			name = Levels;
 			sourceTree = "<group>";
 		};
 		E02BB764126CC223006E46A2 /* cocos2d */ = {
@@ -1158,6 +1179,7 @@
 				E02BB763126CC1E0006E46A2 /* iTunesArtwork in Resources */,
 				C9859A5E1322E84F00FAB918 /* test_tilemap.tmx in Resources */,
 				C9859A5F1322E84F00FAB918 /* tileset.png in Resources */,
+				C9859ACA1322FABE00FAB918 /* test.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,6 +1195,8 @@
 				506EDC31102F528A00A389B3 /* HelloWorldScene.m in Sources */,
 				E0F80F60120A0182005866B8 /* RootViewController.m in Sources */,
 				C9859A631322E88200FAB918 /* KALayerTilemapTest.m in Sources */,
+				C9859A741322EEAC00FAB918 /* KALevel.m in Sources */,
+				C9859A861322F41100FAB918 /* KAFloor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

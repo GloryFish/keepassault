@@ -21,4 +21,12 @@
    H4sIAAAAAAAAA8VUyQ2AMAxr2X9ovgjFV1LEw0KFENs5utda+2dcBOr7BE/+t57qedpzxff2vYt37Mzq5fCzGEdHxT/JndRe8SM9rrZkppQmxYG0nfCv6trZQcVf5Uf9r+KSnrJYxc/+YbVK+N35U7lZDOvplD/RONk/J3eHX+1Y0n90b7DcXX4HqkaObjSzLpDHbv0nUByKP/WO6oD2wPXfObve1Kx0dSgvbG+mqPhZ/7+Ayn3acwc3Vit8ngAMAAA=
   </data>
  </layer>
+ <layer name="Objects" width="32" height="24">
+  <properties>
+   <property name="visible" value="no"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3OMQ0AAAgDsCX494yDXSQ8rYImAN18BwCAMwse0hQeAAwAAA==
+  </data>
+ </layer>
 </map>
