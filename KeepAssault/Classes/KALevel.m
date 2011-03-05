@@ -27,7 +27,11 @@
 			
 			if ([floors count] != 0) {
 				[self addChild:[floors objectAtIndex:0] z:0 tag:kCurrentFloor]; // By default, begin with the first floor in the level
+			} else {
+				NSLog(@"No floors specified in levelDesciption.");
 			}
+		} else {
+			NSLog(@"Can't load floors. Level description is nil.");
 		}
 	}
 	return self;

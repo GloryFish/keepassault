@@ -14,6 +14,9 @@
 
 -(id)initWithFile:(NSString*)filename {
 	if ( (self = [super init]) ) {
+		CCTMXTiledMap* tileMap = [CCTMXTiledMap tiledMapWithTMXFile:filename];
+		tileMap.scale = 2;
+		[self addChild:tileMap];
 	}
 	return self;
 }
