@@ -17,6 +17,8 @@
 		CCTMXTiledMap* tileMap = [CCTMXTiledMap tiledMapWithTMXFile:filename];
 		tileMap.scale = 2;
 		[self addChild:tileMap];
+		
+		[tileMap layerNamed:@"Objects"].visible = NO;
 	}
 	return self;
 }
