@@ -33,16 +33,17 @@
 
 
 -(void)spawnPlayer {
-	NSLog(@"Spawning player");
-	
 	NSArray* spawns = [[currentLevel currentFloor] playerSpawns];
 	
 	NSUInteger randomIndex = arc4random() % [spawns count];
 	
 	CGPoint spawnLocation = [[spawns objectAtIndex:randomIndex] CGPointValue];
 
-	player.position = ccpMult(spawnLocation, 32);
+	NSLog(@"Spawning player at: %@", NSStringFromCGPoint(spawnLocation));
+
+	player.position = [currentLevel tileToWorldCenter:spawnLocation];
 	
+	NSLog(@"World: %@", NSStringFromCGPoint(player.position));
 }
 
 @end

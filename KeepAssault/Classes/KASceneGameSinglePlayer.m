@@ -26,16 +26,11 @@
 		[self addChild:hudLayer];
 		
 		
+		// Start
+		[gameLayer spawnPlayer];
 	}
 	return self;
 }
 
-// Causes the player to be spawned at a spawn point on the current floor
--(void)spawnPlayer {
-	
-	
-	
-	
-}
 
 @end

@@ -26,4 +26,8 @@
 -(KAFloor*)currentFloor;
 -(void)setCurrentFloorNumber:(NSInteger)currentFloor;
 
+-(CGPoint)worldToTile:(CGPoint)coords;
+-(CGPoint)tileToWorldCorner:(CGPoint)coords;
+-(CGPoint)tileToWorldCenter:(CGPoint)coords;
+	
 @end

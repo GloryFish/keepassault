@@ -80,7 +80,7 @@
 
 
 #pragma mark -
-#pragma mark Floor managemnt
+#pragma mark Floor management
 
 -(KAFloor*)currentFloor {
 	return (KAFloor*)[self getChildByTag:kCurrentFloor];
@@ -103,5 +103,23 @@
 	[levelDescription release];
 	[floors release];
 }
+
+#pragma mark -
+#pragma mark Coordinates
+
+
+-(CGPoint)worldToTile:(CGPoint)coords {
+	return ccp(floor(coords.x / 32), floor((-coords.y / 32) + 768));
+}
+
+-(CGPoint)tileToWorldCorner:(CGPoint)coords {
+	return ccp(coords.x * 32, ((-coords.y - 1) * 32) + 768);
+}
+
+-(CGPoint)tileToWorldCenter:(CGPoint)coords {
+	CGPoint corner = [self tileToWorldCorner:coords];
+	return ccpAdd(corner, ccp(16, 16));
+}
+
 
 @end
