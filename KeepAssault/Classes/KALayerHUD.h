@@ -10,9 +10,8 @@
 #import "cocos2d.h"
 
 @interface KALayerHUD : CCLayer {
-	id delegate;
 }
 
-@property (nonatomic, retain) id delegate;
-
++(id)HUDWithTarget:(id)target;
+-(id)initWithTarget:(id)target;
 @end

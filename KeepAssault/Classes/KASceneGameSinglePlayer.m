@@ -22,8 +22,7 @@
 		[gameLayer setPlayer:player];
 		[self addChild:gameLayer];
 		
-		KALayerHUD* hudLayer = [KALayerHUD node];
-		hudLayer.delegate = gameLayer;
+		KALayerHUD* hudLayer = [KALayerHUD HUDWithTarget:gameLayer];
 		[self addChild:hudLayer];
 		
 		

@@ -11,14 +11,18 @@
 
 @implementation KALayerHUD
 
-@synthesize delegate;
++(id)HUDWithTarget:(id)target {
+	KALayerHUD* hud = [[KALayerHUD alloc] initWithTarget:target];
+	return [hud autorelease];
+}
 
--(id)init {
+-(id)initWithTarget:(id)target {
 	if ( (self = [super init]) ) {
-		CCMenuItem* spawnPlayer = [CCMenuItemFont itemFromString:@"Spawn player" target:delegate selector:@selector(spawnPlayer)];
-		
+		CCMenuItem* spawnPlayer = [CCMenuItemFont itemFromString:@"Spawn player" target:target selector:@selector(spawnPlayer)];
 		CCMenu* menu = [CCMenu menuWithItems:spawnPlayer, nil];
 		[menu alignItemsVerticallyWithPadding:30.0f];
+		menu.color = ccBLACK;
+		
 		[self addChild:menu];
 		
 	}
