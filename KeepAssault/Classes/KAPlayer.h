@@ -1,5 +1,5 @@
 //
-//  KALayerHUD.h
+//  KAPlayer.h
 //  KeepAssault
 //
 //  Created by Jay Roberts on 3/5/11.
@@ -9,10 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface KALayerHUD : CCLayer {
-	id delegate;
-}
+@interface KAPlayer : CCNode {
 
-@property (nonatomic, retain) id delegate;
+}
 
 @end

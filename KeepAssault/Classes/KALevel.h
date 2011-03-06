@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "KAFloor.h"
 
 @interface KALevel : CCNode {
 	NSDictionary* levelDescription;
@@ -22,7 +23,7 @@
 -(void)loadLevelFile:(NSString*)levelname;
 -(void)loadFloors;
 
-
--(void)setCurrentFloor:(NSInteger)currentFloor;
+-(KAFloor*)currentFloor;
+-(void)setCurrentFloorNumber:(NSInteger)currentFloor;
 
 @end

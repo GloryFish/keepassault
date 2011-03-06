@@ -8,16 +8,41 @@
 
 #import "KALayerGame.h"
 #import "KALevel.h"
+#import "KAPlayer.h"
 
 @implementation KALayerGame
 
+@synthesize currentLevel;
+
 -(id)init {
 	if ( (self = [super init]) ) {
-		KALevel* level = [KALevel levelNamed:@"test"];
-		[self addChild:level];
+		currentLevel = [KALevel levelNamed:@"test"];
+		[self addChild:currentLevel];
 	}
 	return self;
 }
 
+-(void)setPlayer:(KAPlayer*)p {
+	if (player != nil) {
+		NSAssert(NO, @"player can only be set once");
+	}
+	
+	player = p;
+	[self addChild:player];
+}
+
+
+-(void)spawnPlayer {
+	NSLog(@"Spawning player");
+	
+	NSArray* spawns = [[currentLevel currentFloor] playerSpawns];
+	
+	NSUInteger randomIndex = arc4random() % [spawns count];
+	
+	CGPoint spawnLocation = [[spawns objectAtIndex:randomIndex] CGPointValue];
+
+	player.position = ccpMult(spawnLocation, 32);
+	
+}
 
 @end

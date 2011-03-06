@@ -65,6 +65,8 @@
 		50F414F01069373D002A0D5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EC1069373D002A0D5E /* Default.png */; };
 		50F414F11069373D002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414ED1069373D002A0D5E /* fps_images.png */; };
 		50F414F21069373D002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F414EE1069373D002A0D5E /* Icon.png */; };
+		C96C742113234B6900A238B8 /* KAPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C742013234B6900A238B8 /* KAPlayer.m */; };
+		C96C742313234C9D00A238B8 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = C96C742213234C9D00A238B8 /* player.png */; };
 		C9859A5E1322E84F00FAB918 /* test_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */; };
 		C9859A5F1322E84F00FAB918 /* tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = C9859A5D1322E84F00FAB918 /* tileset.png */; };
 		C9859A631322E88200FAB918 /* KALayerGame.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859A621322E88200FAB918 /* KALayerGame.m */; };
@@ -325,6 +327,9 @@
 		50F414ED1069373D002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F414EE1069373D002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F414EF1069373D002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C96C741F13234B6900A238B8 /* KAPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAPlayer.h; sourceTree = "<group>"; };
+		C96C742013234B6900A238B8 /* KAPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAPlayer.m; sourceTree = "<group>"; };
+		C96C742213234C9D00A238B8 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Images/player.png; sourceTree = "<group>"; };
 		C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test_tilemap.tmx; path = Images/Tiles/test_tilemap.tmx; sourceTree = "<group>"; };
 		C9859A5D1322E84F00FAB918 /* tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tileset.png; path = Images/Tiles/tileset.png; sourceTree = "<group>"; };
 		C9859A611322E88200FAB918 /* KALayerGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KALayerGame.h; sourceTree = "<group>"; };
@@ -746,6 +751,7 @@
 		C9859A5A1322E83B00FAB918 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C96C742213234C9D00A238B8 /* player.png */,
 				C9859A5B1322E84000FAB918 /* Tiles */,
 			);
 			name = Images;
@@ -774,6 +780,8 @@
 				C9859A851322F41100FAB918 /* KAFloor.m */,
 				C9859B37132302A100FAB918 /* KALayerHUD.h */,
 				C9859B38132302A100FAB918 /* KALayerHUD.m */,
+				C96C741F13234B6900A238B8 /* KAPlayer.h */,
+				C96C742013234B6900A238B8 /* KAPlayer.m */,
 			);
 			name = TilemapTesting;
 			sourceTree = "<group>";
@@ -1194,6 +1202,7 @@
 				C9859A5F1322E84F00FAB918 /* tileset.png in Resources */,
 				C9859ACA1322FABE00FAB918 /* test.plist in Resources */,
 				C9859B161323002500FAB918 /* caves_tilemap.tmx in Resources */,
+				C96C742313234C9D00A238B8 /* player.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,6 +1222,7 @@
 				C9859A861322F41100FAB918 /* KAFloor.m in Sources */,
 				C9859B39132302A100FAB918 /* KALayerHUD.m in Sources */,
 				C9859B3C1323032500FAB918 /* KASceneGameSinglePlayer.m in Sources */,
+				C96C742113234B6900A238B8 /* KAPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

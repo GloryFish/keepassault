@@ -11,13 +11,15 @@
 
 @implementation KALayerHUD
 
+@synthesize delegate;
+
 -(id)init {
 	if ( (self = [super init]) ) {
+		CCMenuItem* spawnPlayer = [CCMenuItemFont itemFromString:@"Spawn player" target:delegate selector:@selector(spawnPlayer)];
 		
-		CCLabelTTF* label = [CCLabelTTF labelWithString:@"test label" fontName:@"Helvetica" fontSize:30];
-		label.position = ccp(100, 100);
-		label.color = ccBLACK;
-		[self addChild:label];
+		CCMenu* menu = [CCMenu menuWithItems:spawnPlayer, nil];
+		[menu alignItemsVerticallyWithPadding:30.0f];
+		[self addChild:menu];
 		
 	}
 	return self;

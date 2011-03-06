@@ -11,14 +11,16 @@
 
 @implementation KAFloor
 
+@synthesize playerSpawns;
 
 -(id)initWithFile:(NSString*)filename {
 	if ( (self = [super init]) ) {
-		CCTMXTiledMap* tileMap = [CCTMXTiledMap tiledMapWithTMXFile:filename];
+		tileMap = [CCTMXTiledMap tiledMapWithTMXFile:filename];
 		tileMap.scale = 2;
 		[self addChild:tileMap];
 		
-		[tileMap layerNamed:@"Objects"].visible = NO;
+		[tileMap layerNamed:@"spawn"].visible = NO;
+		[self loadPlayerSpawns];
 	}
 	return self;
 }
@@ -27,6 +29,31 @@
 +(id)floorWithTilemapFile:(NSString*)filename {
 	KAFloor* floor = [[KAFloor alloc] initWithFile:filename];
 	return [floor autorelease];
+}
+
+
+-(void)loadPlayerSpawns {
+	CCTMXLayer* spawnLayer = [tileMap layerNamed:@"spawn"];
+	
+	NSMutableArray* spawns = [[NSMutableArray alloc] init];
+	
+	for (int x = 0; x < spawnLayer.layerSize.width; x++) {
+		for (int y = 0; y < spawnLayer.layerSize.height; y++) {
+			if	([spawnLayer tileGIDAt:ccp(x, y)] != 0) {
+				[spawns addObject:[NSValue valueWithCGPoint:ccp(x, y)]];
+			}
+		}
+	}
+	
+	playerSpawns = spawns;
+	
+	NSLog(@"Loaded playerSpawns: %@", playerSpawns);
+}
+
+
+-(void)onExit {
+	[super onExit];
+	[tileMap release];
 }
 
 @end

@@ -26,7 +26,7 @@
 			[self loadFloors];
 			
 			if ([floors count] != 0) {
-				[self setCurrentFloor:0];
+				[self setCurrentFloorNumber:0];
 			} else {
 				NSLog(@"No floors specified in levelDesciption.");
 			}
@@ -82,7 +82,11 @@
 #pragma mark -
 #pragma mark Floor managemnt
 
--(void)setCurrentFloor:(NSInteger)currentFloor {
+-(KAFloor*)currentFloor {
+	return (KAFloor*)[self getChildByTag:kCurrentFloor];
+}
+
+-(void)setCurrentFloorNumber:(NSInteger)currentFloor {
 	KAFloor* newFloor = [floors objectAtIndex:currentFloor];
 	
 	if (newFloor == nil) {
@@ -95,6 +99,7 @@
 
 
 -(void)onExit {
+	[super onExit];
 	[levelDescription release];
 	[floors release];
 }

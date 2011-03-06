@@ -10,9 +10,14 @@
 #import "cocos2d.h"
 
 @interface KAFloor : CCNode {
-
+	CCTMXTiledMap* tileMap;
+	NSArray* playerSpawns;
 }
 
+@property (nonatomic, retain) NSArray* playerSpawns;
+
 +(id)floorWithTilemapFile:(NSString*)filename;
+
+-(void)loadPlayerSpawns;
 
 @end
