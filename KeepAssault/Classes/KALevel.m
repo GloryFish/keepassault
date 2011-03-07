@@ -109,7 +109,7 @@
 
 
 -(CGPoint)worldToTile:(CGPoint)coords {
-	return ccp(floor(coords.x / 32), floor((-coords.y / 32) + 768));
+	return ccp(floor(coords.x / 32), floor((-coords.y + 768) / 32));
 }
 
 -(CGPoint)tileToWorldCorner:(CGPoint)coords {

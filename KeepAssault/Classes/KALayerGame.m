@@ -9,6 +9,7 @@
 #import "KALayerGame.h"
 #import "KALevel.h"
 #import "KAPlayer.h"
+#import "KAReticle.h"
 
 @implementation KALayerGame
 
@@ -16,8 +17,15 @@
 
 -(id)init {
 	if ( (self = [super init]) ) {
+		self.isTouchEnabled = YES;
+		
 		currentLevel = [KALevel levelNamed:@"test"];
 		[self addChild:currentLevel];
+		
+		reticle = [KAReticle spriteWithFile:@"reticle.png"];
+		reticle.visible = NO;
+		reticle.color = ccRED;
+		[self addChild:reticle];
 	}
 	return self;
 }
@@ -44,6 +52,35 @@
 	player.position = [currentLevel tileToWorldCenter:spawnLocation];
 	
 	NSLog(@"World: %@", NSStringFromCGPoint(player.position));
+}
+
+#pragma mark -
+#pragma mark CCTargetedTouchDelegate
+
+
+-(void)registerWithTouchDispatcher {
+	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+}
+
+-(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+	CGPoint location = [self convertTouchToNodeSpace:touch];
+	location = [self convertToWorldSpace:location];
+
+	reticle.visible = YES;
+	
+	CGPoint tileCoords = [currentLevel worldToTile:location];
+	NSLog(@"tile: %@", NSStringFromCGPoint(tileCoords));
+	
+	reticle.position = [currentLevel tileToWorldCenter:tileCoords];
+	
+	NSLog(@"reticle: %@", NSStringFromCGPoint(reticle.position));
+	
+	return YES;
+}
+
+-(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+	CGPoint location = [self convertTouchToNodeSpace:touch];
+	location = [self convertToWorldSpace:location];
 }
 
 @end

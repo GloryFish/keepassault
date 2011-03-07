@@ -15,16 +15,15 @@
 
 -(id)init {
 	if ( (self = [super init]) ) {
-		KAPlayer* player = [KAPlayer node];
+		player = [KAPlayer node];
 		player.position = ccp(100, 100);
 
-		KALayerGame* gameLayer = [KALayerGame node];
+		gameLayer = [KALayerGame node];
 		[gameLayer setPlayer:player];
 		[self addChild:gameLayer];
 		
-		KALayerHUD* hudLayer = [KALayerHUD HUDWithTarget:gameLayer];
+		hudLayer = [KALayerHUD HUDWithTarget:gameLayer];
 		[self addChild:hudLayer];
-		
 		
 		// Start
 		[gameLayer spawnPlayer];

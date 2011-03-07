@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "KAPlayer.h"
+#import "KALayerGame.h"
+#import "KALayerHUD.h"
 
 @interface KASceneGameSinglePlayer : CCScene {
-
+	KAPlayer* player;
+	KALayerGame* gameLayer;
+	KALayerHUD* hudLayer;
 }
 
 @end
