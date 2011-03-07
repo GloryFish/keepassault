@@ -69,6 +69,9 @@
 		C96C742313234C9D00A238B8 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = C96C742213234C9D00A238B8 /* player.png */; };
 		C96C74EC1324549800A238B8 /* KAReticle.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C74EB1324549800A238B8 /* KAReticle.m */; };
 		C96C74EE1324559400A238B8 /* reticle.png in Resources */ = {isa = PBXBuildFile; fileRef = C96C74ED1324559400A238B8 /* reticle.png */; };
+		C96C758313245C5600A238B8 /* AStar.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C758213245C5600A238B8 /* AStar.m */; };
+		C96C75DD1324618C00A238B8 /* ASPath.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C75DC1324618C00A238B8 /* ASPath.m */; };
+		C96C75E8132462EB00A238B8 /* ASNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C96C75E7132462EB00A238B8 /* ASNode.m */; };
 		C9859A5E1322E84F00FAB918 /* test_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */; };
 		C9859A5F1322E84F00FAB918 /* tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = C9859A5D1322E84F00FAB918 /* tileset.png */; };
 		C9859A631322E88200FAB918 /* KALayerGame.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859A621322E88200FAB918 /* KALayerGame.m */; };
@@ -335,6 +338,12 @@
 		C96C74EA1324549800A238B8 /* KAReticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAReticle.h; sourceTree = "<group>"; };
 		C96C74EB1324549800A238B8 /* KAReticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAReticle.m; sourceTree = "<group>"; };
 		C96C74ED1324559400A238B8 /* reticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reticle.png; path = Images/reticle.png; sourceTree = "<group>"; };
+		C96C758113245C5600A238B8 /* AStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AStar.h; sourceTree = "<group>"; };
+		C96C758213245C5600A238B8 /* AStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AStar.m; sourceTree = "<group>"; };
+		C96C75DB1324618C00A238B8 /* ASPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPath.h; sourceTree = "<group>"; };
+		C96C75DC1324618C00A238B8 /* ASPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPath.m; sourceTree = "<group>"; };
+		C96C75E6132462EB00A238B8 /* ASNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNode.h; sourceTree = "<group>"; };
+		C96C75E7132462EB00A238B8 /* ASNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASNode.m; sourceTree = "<group>"; };
 		C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test_tilemap.tmx; path = Images/Tiles/test_tilemap.tmx; sourceTree = "<group>"; };
 		C9859A5D1322E84F00FAB918 /* tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tileset.png; path = Images/Tiles/tileset.png; sourceTree = "<group>"; };
 		C9859A611322E88200FAB918 /* KALayerGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KALayerGame.h; sourceTree = "<group>"; };
@@ -620,6 +629,7 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C96C759A13245CF400A238B8 /* AStar */,
 				C9859A601322E86600FAB918 /* TilemapTesting */,
 				E0F80F5D120A0182005866B8 /* GameConfig.h */,
 				506EDC2F102F528A00A389B3 /* HelloWorldScene.h */,
@@ -751,6 +761,19 @@
 				50F414EF1069373D002A0D5E /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C96C759A13245CF400A238B8 /* AStar */ = {
+			isa = PBXGroup;
+			children = (
+				C96C758113245C5600A238B8 /* AStar.h */,
+				C96C758213245C5600A238B8 /* AStar.m */,
+				C96C75DB1324618C00A238B8 /* ASPath.h */,
+				C96C75DC1324618C00A238B8 /* ASPath.m */,
+				C96C75E6132462EB00A238B8 /* ASNode.h */,
+				C96C75E7132462EB00A238B8 /* ASNode.m */,
+			);
+			name = AStar;
 			sourceTree = "<group>";
 		};
 		C9859A5A1322E83B00FAB918 /* Images */ = {
@@ -1233,6 +1256,9 @@
 				C9859B3C1323032500FAB918 /* KASceneGameSinglePlayer.m in Sources */,
 				C96C742113234B6900A238B8 /* KAPlayer.m in Sources */,
 				C96C74EC1324549800A238B8 /* KAReticle.m in Sources */,
+				C96C758313245C5600A238B8 /* AStar.m in Sources */,
+				C96C75DD1324618C00A238B8 /* ASPath.m in Sources */,
+				C96C75E8132462EB00A238B8 /* ASNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1438,7 +1464,7 @@
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = NO;
 				"GCC_THUMB_SUPPORT[arch=armv7]" = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
