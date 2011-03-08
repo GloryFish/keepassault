@@ -14,5 +14,7 @@
 @synthesize lid;
 @synthesize location;
 @synthesize mCost;
+@synthesize score;
+@synthesize parent;
 
 @end

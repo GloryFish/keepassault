@@ -11,4 +11,11 @@
 
 @implementation ASPath
 
++(id)pathWithNodes:(NSArray*)nodes totalCost:(CGFloat)totalCost {
+	ASPath* path = [[ASPath alloc] init];
+	
+	return [path autorelease];
+}
+
+
 @end

@@ -50,6 +50,10 @@
 	NSLog(@"Loaded playerSpawns: %@", playerSpawns);
 }
 
+-(CGSize)size {
+	return tileMap.mapSize;
+}
+
 
 -(void)onExit {
 	[super onExit];

@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "KAFloor.h"
+#import "AStar.h"
 
-@interface KALevel : CCNode {
+@interface KALevel : CCNode <AStarMapHandler> {
 	NSDictionary* levelDescription;
 	NSMutableArray* floors;
 }
@@ -29,5 +30,9 @@
 -(CGPoint)worldToTile:(CGPoint)coords;
 -(CGPoint)tileToWorldCorner:(CGPoint)coords;
 -(CGPoint)tileToWorldCenter:(CGPoint)coords;
-	
+
+-(ASNode*)nodeForLocation:(CGPoint)loc;
+-(NSDictionary*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal;
+-(BOOL)location:(NSString*)lid isEqualToLocation:(CGPoint)location;
+
 @end

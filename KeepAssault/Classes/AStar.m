@@ -27,6 +27,8 @@ static AStar* sharedPathfinder = nil;
 }
 
 -(ASNode*)handleNode:(ASNode*)node goal:(CGPoint)goal {
+	NSLog(@"handleNode");
+
 	[open removeObjectForKey:node.lid];
 	[closed setObject:node.lid forKey:node.lid];
 	
@@ -58,6 +60,8 @@ static AStar* sharedPathfinder = nil;
 
 
 -(ASPath*)findPathFrom:(CGPoint)start To:(CGPoint)end {
+	NSLog(@"findPathFrom:To:");
+	
 	[open removeAllObjects];
 	[closed removeAllObjects];
 	
@@ -80,13 +84,56 @@ static AStar* sharedPathfinder = nil;
 		
 		nextNode = [self getBestOpenNode];
 	}
-			
+
+	NSLog(@"returning nil at end of findPathFrom:To:");
+
 	return nil;
 }
 
+-(ASPath*)tracePath:(ASNode*)node {
+	NSLog(@"tracePath");
 
+	NSMutableArray* nodes = [[NSMutableArray alloc] init];
 
+	CGFloat totalCost = node.mCost;
+	
+	ASNode* p = node.parent;
+	
+	[nodes insertObject:node atIndex:0];
+	
+	
+	while (YES) {
+		if (p.parent == nil) {
+			break;
+		}
+		[nodes insertObject:p atIndex:0];
+		
+		p = p.parent;
+	}
+	
+	return [ASPath pathWithNodes:nodes totalCost:totalCost];
+}
 
+-(ASNode*)getBestOpenNode {
+	NSLog(@"getBestOpenNode");
+
+	ASNode* bestNode = nil;
+	
+	for (NSString* lid in open) {
+		ASNode* n = [open objectForKey:lid];
+		
+		if (bestNode == nil) {
+			bestNode = n;
+		} else {
+			if (n.score <= bestNode.score) {
+				bestNode = n;
+			}
+		}
+		
+	}
+	
+	return bestNode;
+}
 
 #pragma mark -
 #pragma mark Singleton

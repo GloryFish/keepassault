@@ -13,10 +13,14 @@
 	NSString* lid;
 	CGPoint location;
 	CGFloat mCost;
+	CGFloat score;
+	ASNode* parent;
 }
 
 @property (nonatomic, retain) NSString* lid;
 @property (nonatomic, assign) CGPoint location;
 @property (nonatomic, assign) CGFloat mCost;
+@property (nonatomic, assign) CGFloat score;
+@property (nonatomic, retain) ASNode* parent;
 
 @end

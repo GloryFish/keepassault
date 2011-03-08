@@ -10,6 +10,7 @@
 #import "KALevel.h"
 #import "KAPlayer.h"
 #import "KAReticle.h"
+#import "AStar.h"
 
 @implementation KALayerGame
 
@@ -68,12 +69,18 @@
 
 	reticle.visible = YES;
 	
-	CGPoint tileCoords = [currentLevel worldToTile:location];
-	NSLog(@"tile: %@", NSStringFromCGPoint(tileCoords));
+	CGPoint tileCoordsReticle = [currentLevel worldToTile:location];
+	NSLog(@"tile: %@", NSStringFromCGPoint(tileCoordsReticle));
 	
-	reticle.position = [currentLevel tileToWorldCenter:tileCoords];
+	reticle.position = [currentLevel tileToWorldCenter:tileCoordsReticle];
 	
 	NSLog(@"reticle: %@", NSStringFromCGPoint(reticle.position));
+	
+	CGPoint tileCoordsPlayer = [currentLevel worldToTile:player.position];
+	
+	// Get path
+	ASPath* path = [[AStar sharedPathfinder] findPathFrom:tileCoordsPlayer To:tileCoordsReticle];
+		
 	
 	return YES;
 }

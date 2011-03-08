@@ -20,4 +20,6 @@
 
 -(void)loadPlayerSpawns;
 
+-(CGSize)size;
+
 @end

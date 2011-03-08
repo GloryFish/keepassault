@@ -121,5 +121,32 @@
 	return ccpAdd(corner, ccp(16, 16));
 }
 
+#pragma mark -
+#pragma mark AStarMapHandler
+
+-(ASNode*)nodeForLocation:(CGPoint)loc {
+	if (loc.x < 0 || loc.y < 0) {
+		NSAssert(NO, @"node out of map on top or left");
+		return nil;
+	}
+	
+	if (loc.x > self.currentFloor.size.width - 1 || loc.y > self.currentFloor.size.height - 1) {
+		NSAssert(NO, @"node out of map on right or bottom");
+		return nil;
+	}
+			
+//			-- ensure location is walkable
+//			if not self:tilePointIsWalkableByEnemy(location) then
+//				return nil
+//				end
+	
+	return [ASNode nodeWithLocation:loc cost:10 lid:[NSString stringWithFormat:@"%i", loc.y * (self.currentFloor.size.width * self.currentFloor.size.height) + loc.x]]; 
+}
+
+-(NSDictionary*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal {
+}
+
+-(BOOL)location:(NSString*)lid isEqualToLocation:(CGPoint)location {
+}
 
 @end

@@ -13,4 +13,6 @@
 
 }
 
++(id)pathWithNodes:(NSArray*)nodes totalCost:(CGFloat)totalCost;
+
 @end

@@ -35,4 +35,6 @@
 -(ASPath*)findPathFrom:(CGPoint)start To:(CGPoint)end;
 -(ASNode*)handleNode:(ASNode*)node goal:(CGPoint)goal;
 -(ASPath*)tracePath:(ASNode*)node;
+-(ASNode*)getBestOpenNode;
+
 @end
