@@ -124,6 +124,8 @@
 #pragma mark -
 #pragma mark AStarMapHandler
 
+// Returns an ASNode representing a specific location in the map. Sets a unique location id
+// which will be the same for any two nodes with the same location.
 -(ASNode*)nodeForLocation:(CGPoint)loc {
 	if (loc.x < 0 || loc.y < 0) {
 		NSAssert(NO, @"node out of map on top or left");
@@ -140,13 +142,72 @@
 //				return nil
 //				end
 	
-	return [ASNode nodeWithLocation:loc cost:10 lid:[NSString stringWithFormat:@"%i", loc.y * (self.currentFloor.size.width * self.currentFloor.size.height) + loc.x]]; 
+	return [ASNode nodeWithLocation:loc cost:10 lid:NSStringFromCGPoint(loc)]; 
 }
 
--(NSDictionary*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal {
+-(ASNode*)nodeForLocation:(CGPoint)loc fromNode:(ASNode*)fromNode withGoal:(CGPoint)goal {
+	ASNode* node = [self nodeForLocation:loc];
+	
+	if (node == nil) {
+		return nil;
+	}
+	
+	CGFloat dx = MAX(loc.x, goal.x) - MIN(loc.x, goal.x); 
+	CGFloat dy = MAX(loc.y, goal.y) - MIN(loc.y, goal.y); 
+	
+	CGFloat emCost = dx + dy;
+		
+	node.mCost = node.mCost + fromNode.mCost;
+	node.score = node.mCost + emCost;
+	node.parent = fromNode;
+		
+	return node;
 }
+
+
+// Given a node, return an NSArray containing all adjacent nodes
+// Goal is the goal-location for the whole path, used to calculate costs
+-(NSArray*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal {
+	
+	
+	NSMutableArray* result = [[[NSMutableArray alloc] init] autorelease];
+	
+	ASNode* n;
+	
+	n = [self nodeForLocation:ccp(node.location.x + 1, node.location.y)
+					 fromNode:node
+					 withGoal:goal];
+	if (n != nil) {
+		[result addObject:n];
+	}
+		
+	n = [self nodeForLocation:ccp(node.location.x - 1, node.location.y)
+					 fromNode:node
+					 withGoal:goal];
+	if (n != nil) {
+		[result addObject:n];
+	}
+	
+	n = [self nodeForLocation:ccp(node.location.x, node.location.y + 1)
+					 fromNode:node
+					 withGoal:goal];
+	if (n != nil) {
+		[result addObject:n];
+	}
+	
+	n = [self nodeForLocation:ccp(node.location.x, node.location.y - 1)
+					 fromNode:node
+					 withGoal:goal];
+	if (n != nil) {
+		[result addObject:n];
+	}
+	
+	return result;	
+}
+
 
 -(BOOL)location:(NSString*)lid isEqualToLocation:(CGPoint)location {
+	return lid == NSStringFromCGPoint(location);
 }
 
 @end

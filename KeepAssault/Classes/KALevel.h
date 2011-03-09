@@ -32,7 +32,8 @@
 -(CGPoint)tileToWorldCenter:(CGPoint)coords;
 
 -(ASNode*)nodeForLocation:(CGPoint)loc;
--(NSDictionary*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal;
+-(ASNode*)nodeForLocation:(CGPoint)loc fromNode:(ASNode*)fromNode withGoal:(CGPoint)goal;
+-(NSArray*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal;
 -(BOOL)location:(NSString*)lid isEqualToLocation:(CGPoint)location;
 
 @end
