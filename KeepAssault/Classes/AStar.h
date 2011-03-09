@@ -14,7 +14,7 @@
 
 -(ASNode*)nodeForLocation:(CGPoint)loc;
 -(NSDictionary*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal;
--(BOOL)location:(NSString*)lid isEqualToLocation:(CGPoint)location;
+-(BOOL)lid:(NSString*)lid isEqualToLocation:(CGPoint)location;
   
 @end
 

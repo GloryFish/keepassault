@@ -7,7 +7,7 @@
 //
 
 #import "KASceneGameSinglePlayer.h"
-#import "KALayerGame.h";
+#import "KALayerGame.h"
 #import "KALayerHUD.h"
 #import "KAPlayer.h"
 

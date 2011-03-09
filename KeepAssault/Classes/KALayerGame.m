@@ -27,6 +27,8 @@
 		reticle.visible = NO;
 		reticle.color = ccRED;
 		[self addChild:reticle];
+		
+		[AStar sharedPathfinder].mapHandler = currentLevel;
 	}
 	return self;
 }

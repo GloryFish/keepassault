@@ -128,12 +128,12 @@
 // which will be the same for any two nodes with the same location.
 -(ASNode*)nodeForLocation:(CGPoint)loc {
 	if (loc.x < 0 || loc.y < 0) {
-		NSAssert(NO, @"node out of map on top or left");
+//		NSAssert(NO, @"node out of map on top or left");
 		return nil;
 	}
 	
 	if (loc.x > self.currentFloor.size.width - 1 || loc.y > self.currentFloor.size.height - 1) {
-		NSAssert(NO, @"node out of map on right or bottom");
+//		NSAssert(NO, @"node out of map on right or bottom");
 		return nil;
 	}
 			
@@ -141,8 +141,9 @@
 //			if not self:tilePointIsWalkableByEnemy(location) then
 //				return nil
 //				end
-	
-	return [ASNode nodeWithLocation:loc cost:10 lid:NSStringFromCGPoint(loc)]; 
+	NSLog(@"About to create node for loc: %@", NSStringFromCGPoint(loc));
+	ASNode* node = [ASNode nodeWithLocation:loc cost:10 lid:NSStringFromCGPoint(loc)];
+	return node;
 }
 
 -(ASNode*)nodeForLocation:(CGPoint)loc fromNode:(ASNode*)fromNode withGoal:(CGPoint)goal {
@@ -167,10 +168,10 @@
 
 // Given a node, return an NSArray containing all adjacent nodes
 // Goal is the goal-location for the whole path, used to calculate costs
--(NSArray*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal {
+-(NSDictionary*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal {
+	// TODO: Check pointer reuse in this funciton
 	
-	
-	NSMutableArray* result = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableDictionary* result = [[[NSMutableDictionary alloc] init] autorelease];
 	
 	ASNode* n;
 	
@@ -178,36 +179,40 @@
 					 fromNode:node
 					 withGoal:goal];
 	if (n != nil) {
-		[result addObject:n];
+		[result setObject:n forKey:n.lid];
 	}
 		
 	n = [self nodeForLocation:ccp(node.location.x - 1, node.location.y)
 					 fromNode:node
 					 withGoal:goal];
 	if (n != nil) {
-		[result addObject:n];
+		[result setObject:n forKey:n.lid];
 	}
 	
 	n = [self nodeForLocation:ccp(node.location.x, node.location.y + 1)
 					 fromNode:node
 					 withGoal:goal];
 	if (n != nil) {
-		[result addObject:n];
+		[result setObject:n forKey:n.lid];
 	}
 	
 	n = [self nodeForLocation:ccp(node.location.x, node.location.y - 1)
 					 fromNode:node
 					 withGoal:goal];
 	if (n != nil) {
-		[result addObject:n];
+		[result setObject:n forKey:n.lid];
 	}
 	
 	return result;	
 }
 
 
--(BOOL)location:(NSString*)lid isEqualToLocation:(CGPoint)location {
-	return lid == NSStringFromCGPoint(location);
+-(BOOL)lid:(NSString*)lid isEqualToLocation:(CGPoint)location {
+	BOOL equal = [lid isEqualToString:NSStringFromCGPoint(location)];
+	
+	NSLog(@"Comparing %@ to %@ with result: %@", lid, NSStringFromCGPoint(location), (equal ? @"YES" : @"NO") );
+	
+	return equal;
 }
 
 @end
