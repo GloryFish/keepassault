@@ -23,4 +23,7 @@
 @property (nonatomic, assign) CGFloat score;
 @property (nonatomic, retain) ASNode* parent;
 
+
++(id)nodeWithLocation:(CGPoint)loc cost:(NSInteger)cost lid:(NSString*)lid;
+
 @end

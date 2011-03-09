@@ -17,4 +17,16 @@
 @synthesize score;
 @synthesize parent;
 
+
++(id)nodeWithLocation:(CGPoint)loc cost:(NSInteger)cost lid:(NSString*)lid {
+	ASNode* node = [[ASNode alloc] init];
+	
+	node.location = loc;
+	node.mCost = cost;
+	node.lid = lid;
+	
+	return [node autorelease];
+}
+
+
 @end
