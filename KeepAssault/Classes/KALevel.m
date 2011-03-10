@@ -169,8 +169,6 @@
 // Given a node, return an NSArray containing all adjacent nodes
 // Goal is the goal-location for the whole path, used to calculate costs
 -(NSDictionary*)getAdjacentNodes:(ASNode*)node goal:(CGPoint)goal {
-	// TODO: Check pointer reuse in this funciton
-	
 	NSMutableDictionary* result = [[[NSMutableDictionary alloc] init] autorelease];
 	
 	ASNode* n;
@@ -180,29 +178,29 @@
 					 withGoal:goal];
 	if (n != nil) {
 		[result setObject:n forKey:n.lid];
-	}
-		
+	}	
+	
 	n = [self nodeForLocation:ccp(node.location.x - 1, node.location.y)
 					 fromNode:node
 					 withGoal:goal];
 	if (n != nil) {
 		[result setObject:n forKey:n.lid];
 	}
-	
+
 	n = [self nodeForLocation:ccp(node.location.x, node.location.y + 1)
 					 fromNode:node
 					 withGoal:goal];
 	if (n != nil) {
 		[result setObject:n forKey:n.lid];
 	}
-	
+
 	n = [self nodeForLocation:ccp(node.location.x, node.location.y - 1)
 					 fromNode:node
 					 withGoal:goal];
 	if (n != nil) {
 		[result setObject:n forKey:n.lid];
 	}
-	
+
 	return result;	
 }
 

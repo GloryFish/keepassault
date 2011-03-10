@@ -36,16 +36,22 @@ static AStar* sharedPathfinder = nil;
 	
 	NSLog(@"handleNode - Got %i adjacent nodes", [nodes count]);
 	
+	NSInteger numToHandle = [nodes count];
+	NSInteger numHandled = 0;
+	
+	NSLog(@"nodes: %@", nodes);
 	for (NSString* lid in nodes) {
 		ASNode* n = [nodes objectForKey:lid];
-		NSLog(@"handleNode - processing %@", n.lid);
+		NSLog(@"handleNode - processing %@ -- %@", lid, n.lid);
+		
+		numHandled++;
 		
 		if ([mapHandler lid:n.lid isEqualToLocation:goal]) {
 			NSLog(@"handleNode - node is goal %@, returning", n.lid);
 			return n;
 		} else if([closed objectForKey:n.lid] != nil) {
 			NSLog(@"handleNode - already examined %@, skipping", n.lid);
-			break;
+			continue;
 		} else if ([open objectForKey:n.lid] != nil) {
 			ASNode* on = [open objectForKey:n.lid];
 			
@@ -63,6 +69,8 @@ static AStar* sharedPathfinder = nil;
 		}
 	}
 
+	NSAssert2(numHandled == numToHandle, @"ARGGGLL: %i, %i", numHandled, numToHandle);
+	
 	return nil;
 }
 
