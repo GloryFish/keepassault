@@ -27,33 +27,51 @@
 }
 
 -(void)update:(ccTime)dt {
-	
-	// Follow path
+	[self followPath];
+
+	if (ccpFuzzyEqual(self.position, target, 5.0f)) {
+		self.position = target;
+	} else {
+		// Move towards target
+		CGPoint movementVector = ccpSub(target, self.position);
+		if (!CGPointEqualToPoint(movementVector, CGPointZero)) {
+			movementVector = ccpNormalize(movementVector);
+		}
+		movementVector = ccpMult(movementVector, speed);
+		movementVector = ccpMult(movementVector, dt);
+		
+		NSLog(@"target: %@", NSStringFromCGPoint(target));
+		
+		NSLog(@"position: %@", NSStringFromCGPoint(self.position));
+		
+		NSLog(@"movement: %@", NSStringFromCGPoint(movementVector));
+		
+		self.position = ccpAdd(self.position, movementVector);
+	}
+}
+
+-(void)followPath {
 	if (path != nil && [path count] > 0) {
 		// Are we close enough to the next path location? If so, remove it
 		CGPoint nextTile = [[path objectAtIndex:0] CGPointValue];		
 		CGPoint nextWorld = [level tileToWorldCenter:nextTile];
-
-		NSLog(@"tile: %@ world: %@", NSStringFromCGPoint(nextTile), NSStringFromCGPoint(nextWorld));
 		
 		if (ccpFuzzyEqual(self.position, nextWorld, 5.0f)) {
 			[path removeObjectAtIndex:0];
+			
 			nextTile = [[path objectAtIndex:0] CGPointValue];
 			nextWorld = [level tileToWorldCenter:nextTile];
 		}
-
-		NSLog(@"tile: %@ world: %@", NSStringFromCGPoint(nextTile), NSStringFromCGPoint(nextWorld));
-
 		
-		
-		CGPoint movementVector = ccpSub(nextWorld, self.position);
-		movementVector = ccpNormalize(movementVector);
-		movementVector = ccpMult(movementVector, speed);
-		movementVector = ccpMult(movementVector, dt);
-		self.position = ccpAdd(self.position, movementVector);
-	}
-	
-	
+		target = nextWorld;
+	}		
+}
+
+-(void)respawnAtWorldPosition:(CGPoint)pos {
+	NSLog(@"setting pos: %@", NSStringFromCGPoint(pos));
+
+	self.position = pos;
+	target = pos;
 }
 
 @end

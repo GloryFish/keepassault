@@ -14,11 +14,14 @@
 	NSMutableArray* path; // An array of locations to travel to
 	KALevel* level;
 	CGFloat speed;
+	CGPoint target;
 }
 
 @property (nonatomic, retain) KALevel* level;
 @property (nonatomic, retain) NSMutableArray* path;
 
 -(void)update:(ccTime)dt;
+-(void)followPath;
+-(void)respawnAtWorldPosition:(CGPoint)pos;
 
 @end

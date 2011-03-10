@@ -58,7 +58,7 @@
 
 	NSLog(@"Spawning player at: %@", NSStringFromCGPoint(spawnLocation));
 
-	player.position = [currentLevel tileToWorldCenter:spawnLocation];
+	[player respawnAtWorldPosition:[currentLevel tileToWorldCenter:spawnLocation]];
 	
 	NSLog(@"World: %@", NSStringFromCGPoint(player.position));
 }
