@@ -18,15 +18,12 @@
  </tileset>
  <layer name="structure" width="32" height="24">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA8VUSQ6AMAhs/f+jvRrCLIBNDxxUZDbavdbal+shpb5P6osf+UTcE5oVXnyPejI9TC/DZz0Ojwx/MrvivcJHfFxulZ1SnBQG4tY5RwpDzXF8UP5n81H+WV8lU9ar8Nk/zKsKvrt/arZ71rr7j/ArHFVWE/2d/NEZy/g4+aN7g2nr7p9TyiPmd/WecO4PZ67Kf1KuZoTfyRxpZt4o/Z1nV5vKfMKD9TgediviVHf+r91zdvNmvRszJBwADAAA
+   H4sIAAAAAAAAA8VUOQ7AIAyD/v/RXasIX4GKIUNphI84zDHGvFwPKfV/p774lU/F/UOzwqvnqGelh+ll+KzH4bHC37k78V7hIz4utyRTipPCQNw6e6Qw1D2ODyhHyBM2/1VfMlO2Wwo/zSHCZ/vh5s/VrHatm39nxqn+E/hO/pL8o9koT9GuszOGzzKj9s/1iPmdvhPO++Hc686/U65mhN+ZOdLMvFH6O9+uNjXzHR6sx/GwWxUnzfyp7DnZvFkvFP1K5QAMAAA=
   </data>
  </layer>
  <layer name="spawn" width="32" height="24">
-  <properties>
-   <property name="visible" value="no"/>
-  </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NgGHjAPNAOGAWjYBTgBbTOo7Qwf7RcGVxgND5GwSgYBaNg8JSFAPxm1pkADAAA
+   H4sIAAAAAAAAA2NgGAWjYBSMglEwFADzQDtgFIyCUTAKyASj5dfgAgBB5Y1QAAwAAA==
   </data>
  </layer>
 </map>
