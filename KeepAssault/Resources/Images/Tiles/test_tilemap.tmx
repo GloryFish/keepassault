@@ -18,7 +18,7 @@
  </tileset>
  <layer name="structure" width="32" height="24">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA8VUyQ2AMAxr2X9ovgjFV1LEw0KFENs5utda+2dcBOr7BE/+t57qedpzxff2vYt37Mzq5fCzGEdHxT/JndRe8SM9rrZkppQmxYG0nfCv6trZQcVf5Uf9r+KSnrJYxc/+YbVK+N35U7lZDOvplD/RONk/J3eHX+1Y0n90b7DcXX4HqkaObjSzLpDHbv0nUByKP/WO6oD2wPXfObve1Kx0dSgvbG+mqPhZ/7+Ayn3acwc3Vit8ngAMAAA=
+   H4sIAAAAAAAAA8VUSQ6AMAhs/f+jvRrCLIBNDxxUZDbavdbal+shpb5P6osf+UTcE5oVXnyPejI9TC/DZz0Ojwx/MrvivcJHfFxulZ1SnBQG4tY5RwpDzXF8UP5n81H+WV8lU9ar8Nk/zKsKvrt/arZ71rr7j/ArHFVWE/2d/NEZy/g4+aN7g2nr7p9TyiPmd/WecO4PZ67Kf1KuZoTfyRxpZt4o/Z1nV5vKfMKD9TgediviVHf+r91zdvNmvRszJBwADAAA
   </data>
  </layer>
  <layer name="spawn" width="32" height="24">
