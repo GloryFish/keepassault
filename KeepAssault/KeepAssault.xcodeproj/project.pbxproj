@@ -1397,6 +1397,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = KeepAssault;
+				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Debug;
@@ -1419,6 +1420,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = KeepAssault;
+				TARGETED_DEVICE_FAMILY = 2;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Release;
