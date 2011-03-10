@@ -32,9 +32,9 @@
 
 +(AStar*)sharedPathfinder;
 
--(ASPath*)findPathFrom:(CGPoint)start To:(CGPoint)end;
+-(NSMutableArray*)findPathFrom:(CGPoint)start To:(CGPoint)end;
 -(ASNode*)handleNode:(ASNode*)node goal:(CGPoint)goal;
--(ASPath*)tracePath:(ASNode*)node;
+-(NSMutableArray*)tracePath:(ASNode*)node;
 -(ASNode*)getBestOpenNode;
 
 @end

@@ -16,6 +16,7 @@
 	KALevel* currentLevel;
 	KAPlayer* player;
 	KAReticle* reticle;
+	CCLabelTTF* infoLabel;
 }
 
 @property (nonatomic, retain) KALevel* currentLevel;

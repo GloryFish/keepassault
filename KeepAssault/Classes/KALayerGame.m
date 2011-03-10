@@ -12,6 +12,8 @@
 #import "KAReticle.h"
 #import "AStar.h"
 
+#define kInfoLabelTag 44
+
 @implementation KALayerGame
 
 @synthesize currentLevel;
@@ -28,6 +30,11 @@
 		reticle.color = ccRED;
 		[self addChild:reticle];
 		
+		infoLabel = [CCLabelTTF labelWithString:@"..." fontName:@"Helvetica" fontSize:24];
+		infoLabel.position = ccp(200, 700);
+		[self addChild:infoLabel];
+		infoLabel.color = ccBLACK;
+		
 		[AStar sharedPathfinder].mapHandler = currentLevel;
 	}
 	return self;
@@ -37,7 +44,6 @@
 	if (player != nil) {
 		NSAssert(NO, @"player can only be set once");
 	}
-	
 	player = p;
 	[self addChild:player];
 }
@@ -80,9 +86,13 @@
 	
 	CGPoint tileCoordsPlayer = [currentLevel worldToTile:player.position];
 	
+	BOOL walkable = [[currentLevel currentFloor] tileIsWalkableAtLocation:tileCoordsReticle];
+	
+	infoLabel.string = [NSString stringWithFormat:@"%@ walkable: %@", NSStringFromCGPoint(tileCoordsReticle), walkable ? @"YES" : @"NO"];
+	
 	// Get path
-	ASPath* path = [[AStar sharedPathfinder] findPathFrom:tileCoordsPlayer To:tileCoordsReticle];
-		
+	NSMutableArray* nodes = [[AStar sharedPathfinder] findPathFrom:tileCoordsPlayer To:tileCoordsReticle];
+	player.path = nodes;
 	
 	return YES;
 }

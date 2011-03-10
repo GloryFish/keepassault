@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "KALevel.h"
 
 @interface KAPlayer : CCNode {
-
+	NSMutableArray* path; // An array of locations to travel to
+	KALevel* level;
+	CGFloat speed;
 }
+
+@property (nonatomic, retain) KALevel* level;
+@property (nonatomic, retain) NSMutableArray* path;
+
+-(void)update:(ccTime)dt;
 
 @end

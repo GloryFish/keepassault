@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "cocos2d.h"
 
-
-@interface ASPath : NSObject {
-
+@interface ASPath : CCNode {
+	NSArray* nodes;
+	CGFloat totalCost;
 }
+
+@property (nonatomic, retain) NSArray* nodes;
+@property (nonatomic, assign) CGFloat totalCost;
 
 +(id)pathWithNodes:(NSArray*)nodes totalCost:(CGFloat)totalCost;
 

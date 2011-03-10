@@ -21,7 +21,7 @@
 		CCMenuItem* spawnPlayer = [CCMenuItemFont itemFromString:@"Spawn player" target:target selector:@selector(spawnPlayer)];
 		CCMenu* menu = [CCMenu menuWithItems:spawnPlayer, nil];
 		[menu alignItemsVerticallyWithPadding:30.0f];
-//		menu.color = ccBLACK;
+		menu.position = ccp(200, 650);
 		
 		[self addChild:menu];
 		

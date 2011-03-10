@@ -7,12 +7,18 @@
 //
 
 #import "ASPath.h"
+#import "cocos2d.h"
 
 
 @implementation ASPath
 
+@synthesize nodes;
+@synthesize totalCost;
+
 +(id)pathWithNodes:(NSArray*)nodes totalCost:(CGFloat)totalCost {
 	ASPath* path = [[ASPath alloc] init];
+	path.nodes = nodes;
+	path.totalCost = totalCost;
 	
 	return [path autorelease];
 }

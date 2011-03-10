@@ -25,6 +25,8 @@
 		hudLayer = [KALayerHUD HUDWithTarget:gameLayer];
 		[self addChild:hudLayer];
 		
+		player.level = [gameLayer currentLevel];
+		
 		// Start
 		[gameLayer spawnPlayer];
 	}

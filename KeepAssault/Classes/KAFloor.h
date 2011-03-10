@@ -21,5 +21,5 @@
 -(void)loadPlayerSpawns;
 
 -(CGSize)size;
-
+-(BOOL)tileIsWalkableAtLocation:(CGPoint)coord;
 @end

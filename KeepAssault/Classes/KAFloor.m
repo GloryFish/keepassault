@@ -54,6 +54,16 @@
 	return tileMap.mapSize;
 }
 
+-(BOOL)tileIsWalkableAtLocation:(CGPoint)loc {
+	NSInteger gid = [[tileMap layerNamed:@"structure"] tileGIDAt:loc];
+	NSDictionary* props = [tileMap propertiesForGID:gid];
+	
+	if ([[props objectForKey:@"walkable"] isEqualToString:@"yes"]) {
+		return YES;
+	} else {
+		return NO;
+	}
+}
 
 -(void)onExit {
 	[super onExit];

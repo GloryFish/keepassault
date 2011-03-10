@@ -118,7 +118,9 @@
 
 -(CGPoint)tileToWorldCenter:(CGPoint)coords {
 	CGPoint corner = [self tileToWorldCorner:coords];
-	return ccpAdd(corner, ccp(16, 16));
+	CGPoint world = ccpAdd(corner, ccp(16, 16));
+	NSLog(@"world: %@", NSStringFromCGPoint(world));
+	return world;
 }
 
 #pragma mark -
@@ -128,20 +130,17 @@
 // which will be the same for any two nodes with the same location.
 -(ASNode*)nodeForLocation:(CGPoint)loc {
 	if (loc.x < 0 || loc.y < 0) {
-//		NSAssert(NO, @"node out of map on top or left");
 		return nil;
 	}
 	
 	if (loc.x > self.currentFloor.size.width - 1 || loc.y > self.currentFloor.size.height - 1) {
-//		NSAssert(NO, @"node out of map on right or bottom");
 		return nil;
 	}
-			
-//			-- ensure location is walkable
-//			if not self:tilePointIsWalkableByEnemy(location) then
-//				return nil
-//				end
-	NSLog(@"About to create node for loc: %@", NSStringFromCGPoint(loc));
+
+	if (![[self currentFloor] tileIsWalkableAtLocation:loc]) {
+		return nil;
+	}
+
 	ASNode* node = [ASNode nodeWithLocation:loc cost:10 lid:NSStringFromCGPoint(loc)];
 	return node;
 }
@@ -206,11 +205,7 @@
 
 
 -(BOOL)lid:(NSString*)lid isEqualToLocation:(CGPoint)location {
-	BOOL equal = [lid isEqualToString:NSStringFromCGPoint(location)];
-	
-	NSLog(@"Comparing %@ to %@ with result: %@", lid, NSStringFromCGPoint(location), (equal ? @"YES" : @"NO") );
-	
-	return equal;
+	return [lid isEqualToString:NSStringFromCGPoint(location)];
 }
 
 @end
