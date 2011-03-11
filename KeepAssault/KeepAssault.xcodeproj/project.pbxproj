@@ -81,6 +81,8 @@
 		C9859B161323002500FAB918 /* caves_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C9859B151323002500FAB918 /* caves_tilemap.tmx */; };
 		C9859B39132302A100FAB918 /* KALayerHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859B38132302A100FAB918 /* KALayerHUD.m */; };
 		C9859B3C1323032500FAB918 /* KASceneGameSinglePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859B3B1323032500FAB918 /* KASceneGameSinglePlayer.m */; };
+		C98CDEC8132AE18D009EDBBC /* fantasy_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C98CDEC7132AE18D009EDBBC /* fantasy_tilemap.tmx */; };
+		C98CDECA132AE202009EDBBC /* fantasytiles.png in Resources */ = {isa = PBXBuildFile; fileRef = C98CDEC9132AE202009EDBBC /* fantasytiles.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -358,6 +360,8 @@
 		C9859B38132302A100FAB918 /* KALayerHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KALayerHUD.m; sourceTree = "<group>"; };
 		C9859B3A1323032500FAB918 /* KASceneGameSinglePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KASceneGameSinglePlayer.h; sourceTree = "<group>"; };
 		C9859B3B1323032500FAB918 /* KASceneGameSinglePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASceneGameSinglePlayer.m; sourceTree = "<group>"; };
+		C98CDEC7132AE18D009EDBBC /* fantasy_tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fantasy_tilemap.tmx; path = Images/Tiles/fantasy_tilemap.tmx; sourceTree = "<group>"; };
+		C98CDEC9132AE202009EDBBC /* fantasytiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fantasytiles.png; path = Images/Tiles/fantasytiles.png; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -792,6 +796,8 @@
 				C9859B151323002500FAB918 /* caves_tilemap.tmx */,
 				C9859A5C1322E84F00FAB918 /* test_tilemap.tmx */,
 				C9859A5D1322E84F00FAB918 /* tileset.png */,
+				C98CDEC7132AE18D009EDBBC /* fantasy_tilemap.tmx */,
+				C98CDEC9132AE202009EDBBC /* fantasytiles.png */,
 			);
 			name = Tiles;
 			sourceTree = "<group>";
@@ -1235,6 +1241,8 @@
 				C9859B161323002500FAB918 /* caves_tilemap.tmx in Resources */,
 				C96C742313234C9D00A238B8 /* player.png in Resources */,
 				C96C74EE1324559400A238B8 /* reticle.png in Resources */,
+				C98CDEC8132AE18D009EDBBC /* fantasy_tilemap.tmx in Resources */,
+				C98CDECA132AE202009EDBBC /* fantasytiles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

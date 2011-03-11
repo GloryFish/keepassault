@@ -51,6 +51,10 @@
 
 -(void)spawnPlayer {
 	NSArray* spawns = [[currentLevel currentFloor] playerSpawns];
+    
+    if ([spawns count] == 0) {
+        return;
+    }
 	
 	NSUInteger randomIndex = arc4random() % [spawns count];
 	

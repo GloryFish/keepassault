@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="24" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="fantasytiles" tilewidth="16" tileheight="16">
+  <image source="fantasytiles.png" width="256" height="256"/>
+ </tileset>
+ <layer name="Floor" width="32" height="24">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3DQQ0AAAwDofvVv+MJGSSsmqqq+uIBfbsMxwAMAAA=
+  </data>
+ </layer>
+ <layer name="Walls" width="32" height="24">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2V0Q2AIAxEuxo6gTKBsv8OwodJ07QGsLSa0OQiP/jKydUAAIuT1qwN/Coifk/vmvyevZr8AG3n1ubX+hDJcwRf8sKK/+SFBf/IOgUlA37tXq6kb8flFfNTh25PdrSWzsH1+yb/Uk3+P/lS3lqFs4vvJXdfv/T/HVFlFlB/8BwYzefeHcl68m35tBdvPs2spcpMuACQkJznAAwAAA==
+  </data>
+ </layer>
+ <layer name="Decoration" width="32" height="24">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAXIoJBMuYEAbgNsf9gA209L4DLA9ocMsP1DFaQAcSqUHQ6lXYnQF04CG1kMHZQAcSmaWCgR9qODRjT+UjLMoARsBOJNQLwZiLcA8VY62z+cQBoJalWgtCoQq0HZyjjUFmERWw6lcaVhQsAESpsCsRmUbUyC/uWElVANLMfCxmY/SAy5XKCF/dvRaHR12MoFatpPDXWkAmS/4rODHmkC5hZsdmGLE1oBeqZ/agAADHWJlwAMAAA=
+  </data>
+ </layer>
+ <layer name="Collision" width="32" height="24">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA9WUXRJAIQRG7X9X7ey+NnfQ57/M9CIcCouI1vCZkp0/kXckTjbfWncFH/Wp5iN1d/Alny7+jf+/+2oxkXmNzr/mL3EQvVRXxM7K9+67LL5XXuVH+s/Sl5yey9M7m1bbyPv/dxan0/q4gy/psvnafQdf6u9KPso67bhMOb0Jx588H7KVs+QADAAA
+  </data>
+ </layer>
+ <layer name="Spawns" width="32" height="24">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3OMQ0AAAgDsPmXhTIU7CPhaRU0AYBb8x0AoFpO1IVQAAwAAA==
+  </data>
+ </layer>
+</map>

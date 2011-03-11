@@ -19,7 +19,7 @@
 		tileMap.scale = 2;
 		[self addChild:tileMap];
 		
-		[tileMap layerNamed:@"spawn"].visible = NO;
+		[tileMap layerNamed:@"Collision"].visible = NO;
 		[self loadPlayerSpawns];
 	}
 	return self;
@@ -33,7 +33,7 @@
 
 
 -(void)loadPlayerSpawns {
-	CCTMXLayer* spawnLayer = [tileMap layerNamed:@"spawn"];
+	CCTMXLayer* spawnLayer = [tileMap layerNamed:@"Spawns"];
 	
 	NSMutableArray* spawns = [[NSMutableArray alloc] init];
 	
@@ -55,14 +55,17 @@
 }
 
 -(BOOL)tileIsWalkableAtLocation:(CGPoint)loc {
-	NSInteger gid = [[tileMap layerNamed:@"structure"] tileGIDAt:loc];
-	NSDictionary* props = [tileMap propertiesForGID:gid];
-	
-	if ([[props objectForKey:@"walkable"] isEqualToString:@"yes"]) {
-		return YES;
-	} else {
-		return NO;
-	}
+	NSInteger gid = [[tileMap layerNamed:@"Collision"] tileGIDAt:loc];
+    
+    return gid == 0;
+    
+//	NSDictionary* props = [tileMap propertiesForGID:gid];
+//	
+//	if ([[props objectForKey:@"walkable"] isEqualToString:@"yes"]) {
+//		return YES;
+//	} else {
+//		return NO;
+//	}
 }
 
 -(void)onExit {

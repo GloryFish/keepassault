@@ -2,12 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>name</key>
-	<string>Test Level</string>
 	<key>floors</key>
 	<array>
+		<string>fantasy_tilemap.tmx</string>
 		<string>test_tilemap.tmx</string>
 		<string>caves_tilemap.tmx</string>
 	</array>
+	<key>name</key>
+	<string>Test Level</string>
 </dict>
 </plist>
