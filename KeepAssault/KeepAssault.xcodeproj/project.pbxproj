@@ -83,6 +83,9 @@
 		C9859B3C1323032500FAB918 /* KASceneGameSinglePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9859B3B1323032500FAB918 /* KASceneGameSinglePlayer.m */; };
 		C98CDEC8132AE18D009EDBBC /* fantasy_tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C98CDEC7132AE18D009EDBBC /* fantasy_tilemap.tmx */; };
 		C98CDECA132AE202009EDBBC /* fantasytiles.png in Resources */ = {isa = PBXBuildFile; fileRef = C98CDEC9132AE202009EDBBC /* fantasytiles.png */; };
+		C98CDECC132AF030009EDBBC /* player_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = C98CDECB132AF030009EDBBC /* player_sheet.png */; };
+		C9A9C5CD132C393900235E78 /* player_zwoptex.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9A9C5CB132C393900235E78 /* player_zwoptex.plist */; };
+		C9A9C5CE132C393900235E78 /* player_zwoptex.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A9C5CC132C393900235E78 /* player_zwoptex.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -362,6 +365,9 @@
 		C9859B3B1323032500FAB918 /* KASceneGameSinglePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KASceneGameSinglePlayer.m; sourceTree = "<group>"; };
 		C98CDEC7132AE18D009EDBBC /* fantasy_tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fantasy_tilemap.tmx; path = Images/Tiles/fantasy_tilemap.tmx; sourceTree = "<group>"; };
 		C98CDEC9132AE202009EDBBC /* fantasytiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fantasytiles.png; path = Images/Tiles/fantasytiles.png; sourceTree = "<group>"; };
+		C98CDECB132AF030009EDBBC /* player_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_sheet.png; path = Images/player_sheet.png; sourceTree = "<group>"; };
+		C9A9C5CB132C393900235E78 /* player_zwoptex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = player_zwoptex.plist; path = Images/Player/player_zwoptex.plist; sourceTree = "<group>"; };
+		C9A9C5CC132C393900235E78 /* player_zwoptex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_zwoptex.png; path = Images/Player/player_zwoptex.png; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -783,6 +789,8 @@
 		C9859A5A1322E83B00FAB918 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C98CDED3132C3133009EDBBC /* Player */,
+				C98CDECB132AF030009EDBBC /* player_sheet.png */,
 				C96C74ED1324559400A238B8 /* reticle.png */,
 				C96C742213234C9D00A238B8 /* player.png */,
 				C9859A5B1322E84000FAB918 /* Tiles */,
@@ -829,6 +837,15 @@
 				C9859A761322F00800FAB918 /* test.plist */,
 			);
 			name = Levels;
+			sourceTree = "<group>";
+		};
+		C98CDED3132C3133009EDBBC /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				C9A9C5CB132C393900235E78 /* player_zwoptex.plist */,
+				C9A9C5CC132C393900235E78 /* player_zwoptex.png */,
+			);
+			name = Player;
 			sourceTree = "<group>";
 		};
 		E02BB764126CC223006E46A2 /* cocos2d */ = {
@@ -1243,6 +1260,9 @@
 				C96C74EE1324559400A238B8 /* reticle.png in Resources */,
 				C98CDEC8132AE18D009EDBBC /* fantasy_tilemap.tmx in Resources */,
 				C98CDECA132AE202009EDBBC /* fantasytiles.png in Resources */,
+				C98CDECC132AF030009EDBBC /* player_sheet.png in Resources */,
+				C9A9C5CD132C393900235E78 /* player_zwoptex.plist in Resources */,
+				C9A9C5CE132C393900235E78 /* player_zwoptex.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

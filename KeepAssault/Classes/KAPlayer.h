@@ -15,11 +15,18 @@
 	KALevel* level;
 	CGFloat speed;
 	CGPoint target;
+    
+    CCSprite* playerSprite;
+    NSMutableDictionary* animations;
+    
 }
 
 @property (nonatomic, retain) KALevel* level;
 @property (nonatomic, retain) NSMutableArray* path;
+@property (nonatomic, retain) CCSprite* playerSprite;
+@property (nonatomic, retain) NSMutableDictionary* animations;
 
+-(void)buildAnimations;
 -(void)update:(ccTime)dt;
 -(void)followPath;
 -(void)respawnAtWorldPosition:(CGPoint)pos;

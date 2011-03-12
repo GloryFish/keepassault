@@ -79,24 +79,21 @@
 	CGPoint location = [self convertTouchToNodeSpace:touch];
 	location = [self convertToWorldSpace:location];
 
-	reticle.visible = YES;
-	
-	CGPoint tileCoordsReticle = [currentLevel worldToTile:location];
-	NSLog(@"tile: %@", NSStringFromCGPoint(tileCoordsReticle));
-	
-	reticle.position = [currentLevel tileToWorldCenter:tileCoordsReticle];
-	
-	NSLog(@"reticle: %@", NSStringFromCGPoint(reticle.position));
-	
+    CGPoint tileCoordsReticle = [currentLevel worldToTile:location];
 	CGPoint tileCoordsPlayer = [currentLevel worldToTile:player.position];
+
+    BOOL walkable = [[currentLevel currentFloor] tileIsWalkableAtLocation:tileCoordsReticle];
+    
+    if (walkable) {
+        // Display reticle
+        reticle.visible = YES;
+        reticle.position = [currentLevel tileToWorldCenter:tileCoordsReticle];
+
+        // Get path
+        NSMutableArray* nodes = [[AStar sharedPathfinder] findPathFrom:tileCoordsPlayer To:tileCoordsReticle];
+        player.path = nodes;
+    }
 	
-	BOOL walkable = [[currentLevel currentFloor] tileIsWalkableAtLocation:tileCoordsReticle];
-	
-	infoLabel.string = [NSString stringWithFormat:@"%@ walkable: %@", NSStringFromCGPoint(tileCoordsReticle), walkable ? @"YES" : @"NO"];
-	
-	// Get path
-	NSMutableArray* nodes = [[AStar sharedPathfinder] findPathFrom:tileCoordsPlayer To:tileCoordsReticle];
-	player.path = nodes;
 	
 	return YES;
 }

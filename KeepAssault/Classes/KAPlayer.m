@@ -14,16 +14,49 @@
 @synthesize level;
 @synthesize path;
 
+@synthesize playerSprite;
+@synthesize animations;
+
 -(id)init {
 	if ( (self = [super init]) ) {
 		speed = 256.0f;
-		
-		CCSprite* sprite = [CCSprite spriteWithFile:@"player.png"];
-		[self addChild:sprite];
-		
+        
+        [self buildAnimations];
+        
 		[self scheduleUpdate];
 	}
 	return self;
+}
+
+// Called by init to prepare all of the animations needed by the Player
+-(void)buildAnimations {
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"player_zwoptex.plist"];
+    
+    CCSpriteBatchNode* spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"player_zwoptex.png"];
+    [self addChild:spriteSheet];
+    
+    animations = [NSMutableDictionary dictionaryWithCapacity:4];
+    
+    
+    NSArray* directions = [NSArray arrayWithObjects:@"up", @"down", @"left", @"right", nil];
+    
+    // Prepare walk animations
+    for (NSString* dir in directions) {
+        NSMutableArray *walkFrames = [NSMutableArray array];
+        for(int i = 1; i <= 2; ++i) {
+            [walkFrames addObject:
+             [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+              [NSString stringWithFormat:@"player_walk_%@_%d.png", dir, i]]];
+        }
+        
+        CCAnimation* walkAnimation = [CCAnimation animationWithFrames:walkFrames delay:0.2];
+        [animations setObject:walkAnimation forKey:[NSString stringWithFormat:@"walk_%@", dir]];
+    }
+    
+    
+    // Set inital player state
+    playerSprite = [CCSprite spriteWithSpriteFrameName:@"player_stand_down.png"];
+    [spriteSheet addChild:playerSprite];
 }
 
 -(void)update:(ccTime)dt {
@@ -72,6 +105,11 @@
 
 	self.position = pos;
 	target = pos;
+}
+
+-(void)onExit {
+    self.animations = nil;
+    self.playerSprite = nil;
 }
 
 @end
