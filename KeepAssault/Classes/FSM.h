@@ -2,6 +2,8 @@
 //  FSM.h
 //  KeepAssault
 //
+//  http://www.cocos2d-iphone.org/forum/topic/12752
+//
 //  Created by Jay Roberts on 3/12/11.
 //  Copyright 2011 GloryFish.org. All rights reserved.
 //

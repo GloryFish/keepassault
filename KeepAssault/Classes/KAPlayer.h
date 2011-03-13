@@ -17,7 +17,6 @@
 	KALevel* level;
 	CGFloat speed;
 	CGPoint target;
-    NSString* currentDirection;
     CCAction* currentAnimationAction;
     
     CCSprite* playerSprite;

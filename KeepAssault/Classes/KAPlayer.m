@@ -14,11 +14,10 @@
 @synthesize level;
 @synthesize path;
 @synthesize target;
-@synthesize currentDirection;
 @synthesize currentAnimationAction;
 @synthesize playerSprite;
 @synthesize animations;
-
+@synthesize currentDirection;
 -(id)init {
 	if ( (self = [super init]) ) {
 		speed = 256.0f;
