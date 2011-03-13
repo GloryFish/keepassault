@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "KALevel.h"
 
 @protocol KAActor <NSObject>
     
 -(void)playAnimation:(NSString*)animationName;
+-(NSMutableArray*)path;
+-(KALevel*)level;
+-(CGPoint)position;
+-(void)setPosition:(CGPoint)position;
+-(CGPoint)target;
+-(void)setTarget:(CGPoint)target;
 
 @end

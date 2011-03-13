@@ -13,6 +13,7 @@
 
 @synthesize level;
 @synthesize path;
+@synthesize target;
 @synthesize currentDirection;
 @synthesize currentAnimationAction;
 @synthesize playerSprite;
@@ -33,6 +34,14 @@
 		[self scheduleUpdate];
 	}
 	return self;
+}
+
+- (void) setPath: (NSMutableArray *) newValue {
+    [path autorelease];
+    path = [newValue retain];
+    
+    [stateMachine changeStateWithClass:[KAStatePlayerFollowPath class]];
+    
 }
 
 // Called by init to prepare all of the animations needed by the Player
@@ -80,8 +89,6 @@
 -(void)update:(ccTime)dt {
     [stateMachine update:dt];
     
-	[self followPath];
-
 	if (ccpFuzzyEqual(self.position, target, 5.0f)) {
 		self.position = target;
 	} else {
@@ -133,22 +140,6 @@
     }
 }
 
--(void)followPath {
-	if (path != nil && [path count] > 0) {
-		// Are we close enough to the next path location? If so, remove it
-		CGPoint nextTile = [[path objectAtIndex:0] CGPointValue];		
-		CGPoint nextWorld = [level tileToWorldCenter:nextTile];
-		
-		if (ccpFuzzyEqual(self.position, nextWorld, 5.0f)) {
-			[path removeObjectAtIndex:0];
-			
-			nextTile = [[path objectAtIndex:0] CGPointValue];
-			nextWorld = [level tileToWorldCenter:nextTile];
-		}
-		
-		target = nextWorld;
-	}		
-}
 
 -(void)respawnAtWorldPosition:(CGPoint)pos {
 	NSLog(@"setting pos: %@", NSStringFromCGPoint(pos));

@@ -29,6 +29,7 @@
 
 @property (nonatomic, retain) KALevel* level;
 @property (nonatomic, retain) NSMutableArray* path;
+@property (nonatomic, assign) CGPoint target;
 @property (nonatomic, retain) NSString* currentDirection;
 @property (nonatomic, retain) CCAction* currentAnimationAction;
 @property (nonatomic, retain) CCSprite* playerSprite;
@@ -38,7 +39,6 @@
 -(void)buildAnimations;
 -(void)playAnimation:(NSString *)animationName;
 -(void)update:(ccTime)dt;
--(void)followPath;
 -(void)respawnAtWorldPosition:(CGPoint)pos;
 -(NSString*)directionNameFromVector:(CGPoint)vector;
 

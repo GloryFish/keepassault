@@ -6,6 +6,7 @@
 //  Copyright 2011 GloryFish.org. All rights reserved.
 //
 
+#import "cocos2d.h"
 #import "KAPlayerStates.h"
 #import "FSM.h"
 #import "KAActor.h"
@@ -15,7 +16,9 @@
 -(void)enter:(FSMState*)prevState {
 	[super enter:prevState];
     
-	[fsm.actor playAnimation:@"Idle"];
+    [fsm.actor playAnimation:@"stand_down"];
+    
+    NSLog(@"entered state: KAStatePlayerIdle");
 }
 
 -(void)update:(float)dt {
@@ -32,6 +35,40 @@
 //	}
     
 	return [super updateTransitions:dt];
+}
+
+@end
+
+
+@implementation KAStatePlayerFollowPath
+    
+-(void)enter:(FSMState*)prevState {
+    [super enter:prevState];
+    NSLog(@"entered state: KAStatePlayerFollowPath");
+}
+    
+-(void)update:(float)dt {
+    NSMutableArray* path = fsm.actor.path;
+    KALevel* level = fsm.actor.level;
+    
+    if (path != nil && [path count] > 0) {
+		// Are we close enough to the next path location? If so, remove it
+		CGPoint nextTile = [[path objectAtIndex:0] CGPointValue];		
+		CGPoint nextWorld = [level tileToWorldCenter:nextTile];
+		
+		if (ccpFuzzyEqual(fsm.actor.position, nextWorld, 5.0f)) {
+			[path removeObjectAtIndex:0];
+			
+			nextTile = [[path objectAtIndex:0] CGPointValue];
+			nextWorld = [level tileToWorldCenter:nextTile];
+		}
+		
+		fsm.actor.target = nextWorld;
+	}	
+}
+    
+-(BOOL)updateTransitions:(float)dt {
+    return [super updateTransitions:dt];
 }
 
 @end

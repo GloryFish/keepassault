@@ -9,6 +9,10 @@
 #import "FSMState.h"
 
 @interface KAStatePlayerIdle : FSMState {
+    BOOL targetSet;
 }
+@end
 
+@interface KAStatePlayerFollowPath : FSMState {
+}
 @end
