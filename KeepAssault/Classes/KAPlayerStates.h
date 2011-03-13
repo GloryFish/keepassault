@@ -22,3 +22,9 @@
 -(NSString*)directionNameFromVector:(CGPoint)vector;
 
 @end
+
+
+@interface KAStatePlayerSpawn : FSMState {
+    ccTime elapsed;
+}
+@end

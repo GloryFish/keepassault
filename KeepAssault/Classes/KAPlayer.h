@@ -36,7 +36,7 @@
 
 
 -(void)buildAnimations;
--(void)playAnimation:(NSString *)animationName;
+-(void)playAnimation:(NSString *)animationName repeat:(BOOL)repeat;
 -(void)update:(ccTime)dt;
 -(void)respawnAtWorldPosition:(CGPoint)pos;
 -(NSString*)directionNameFromVector:(CGPoint)vector;

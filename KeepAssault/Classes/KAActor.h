@@ -11,7 +11,7 @@
 
 @protocol KAActor <NSObject>
     
--(void)playAnimation:(NSString*)animationName;
+-(void)playAnimation:(NSString*)animationName repeat:(BOOL)repeat;
 -(NSMutableArray*)path;
 -(KALevel*)level;
 -(CGPoint)position;

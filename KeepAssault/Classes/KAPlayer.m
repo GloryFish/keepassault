@@ -78,13 +78,23 @@
     [spriteSheet addChild:playerSprite];
 }
 
--(void)playAnimation:(NSString *)animationName {
-    // Set animation here
+-(void)playAnimation:(NSString *)animationName repeat:(BOOL)repeat {
+    if ([animationName isEqualToString:@"spawn"]) {
+        [playerSprite runAction:[CCFadeIn actionWithDuration:1.5f]];
+        return [self playAnimation:@"stand_down" repeat:YES];
+    }
+    
     CCAnimation* animation = [animations objectForKey:animationName];
     
     if (animation != nil) {
         [self.currentAnimationAction stop];
-        self.currentAnimationAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO]];
+        
+        if (repeat) {
+            self.currentAnimationAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO]];
+        } else {
+            self.currentAnimationAction = [CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO];
+        }
+        
         [playerSprite runAction:currentAnimationAction];
     }
 }
@@ -117,9 +127,9 @@
 
 -(void)respawnAtWorldPosition:(CGPoint)pos {
 	NSLog(@"setting pos: %@", NSStringFromCGPoint(pos));
-
 	self.position = pos;
-	target = pos;
+    
+    [stateMachine changeStateWithClass:[KAStatePlayerSpawn class]];
 }
 
 -(void)onExit {

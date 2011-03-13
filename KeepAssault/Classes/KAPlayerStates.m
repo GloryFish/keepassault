@@ -16,7 +16,7 @@
 -(void)enter:(FSMState*)prevState {
 	[super enter:prevState];
 
-    [fsm.actor playAnimation:@"stand_down"];
+    [fsm.actor playAnimation:@"stand_down" repeat:YES];
     
     NSLog(@"entered state: KAStatePlayerIdle");
 }
@@ -53,7 +53,7 @@
     fsm.actor.target = nextWorld;
     
     self.direction = [self directionNameFromVector:ccpSub(fsm.actor.target, fsm.actor.position)];
-    [fsm.actor playAnimation:[NSString stringWithFormat:@"walk_%@", self.direction]];
+    [fsm.actor playAnimation:[NSString stringWithFormat:@"walk_%@", self.direction] repeat:YES];
     
     NSLog(@"target is %@", NSStringFromCGPoint(fsm.actor.target));
 }
@@ -77,7 +77,7 @@
             
             if (![newDirection isEqualToString:direction]) {
                 self.direction = newDirection;
-                [fsm.actor playAnimation:[NSString stringWithFormat:@"walk_%@", self.direction]];
+                [fsm.actor playAnimation:[NSString stringWithFormat:@"walk_%@", self.direction] repeat:YES];
             }
             
         }
@@ -119,3 +119,31 @@
 }
 
 @end
+
+
+@implementation KAStatePlayerSpawn
+
+-(void)enter:(FSMState*)prevState {
+	[super enter:prevState];
+    
+    fsm.actor.target = fsm.actor.position;
+    [fsm.actor playAnimation:@"spawn" repeat:NO];
+    
+    NSLog(@"entered state: KAStatePlayerSpawn");
+}
+
+-(void)update:(float)dt {
+    elapsed = elapsed + dt;
+}
+
+-(BOOL)updateTransitions:(float)dt {
+    if (elapsed > 1.5f) {
+        [fsm changeStateWithClass:[KAStatePlayerIdle class]];
+        return YES;
+    }
+    
+	return [super updateTransitions:dt];
+}
+
+@end
+
