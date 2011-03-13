@@ -88,36 +88,7 @@
 
 -(void)update:(ccTime)dt {
     [stateMachine update:dt];
-    
-	if (ccpFuzzyEqual(self.position, target, 5.0f)) {
-		self.position = target;
-	} else {
-		// Move towards target
-		CGPoint movementVector = ccpSub(target, self.position);
-		if (!CGPointEqualToPoint(movementVector, CGPointZero)) {
-			movementVector = ccpNormalize(movementVector);
-		}
-		movementVector = ccpMult(movementVector, speed);
-		movementVector = ccpMult(movementVector, dt);
-		
-		NSLog(@"target: %@", NSStringFromCGPoint(target));
-		
-		NSLog(@"position: %@", NSStringFromCGPoint(self.position));
-		
-		NSLog(@"movement: %@", NSStringFromCGPoint(movementVector));
-		
-		self.position = ccpAdd(self.position, movementVector);
-        
-        // Handle direction changes
-        NSString* newDirection = [self directionNameFromVector:movementVector];
-        
-        if (![currentDirection isEqualToString:newDirection]) {
-            // Change direction
-            
-        }
-        
-        
-	}
+    [stateMachine updateTransitions:dt];
 }
 
 -(NSString*)directionNameFromVector:(CGPoint)vector {

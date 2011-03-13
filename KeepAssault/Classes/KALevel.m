@@ -119,7 +119,6 @@
 -(CGPoint)tileToWorldCenter:(CGPoint)coords {
 	CGPoint corner = [self tileToWorldCorner:coords];
 	CGPoint world = ccpAdd(corner, ccp(16, 16));
-	NSLog(@"world: %@", NSStringFromCGPoint(world));
 	return world;
 }
 

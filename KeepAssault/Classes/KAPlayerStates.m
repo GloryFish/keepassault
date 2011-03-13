@@ -45,29 +45,53 @@
 -(void)enter:(FSMState*)prevState {
     [super enter:prevState];
     NSLog(@"entered state: KAStatePlayerFollowPath");
+
+    // Set the players initial target to the first item in the path
+    // And start moving them towards it
+    CGPoint nextTile = [[fsm.actor.path objectAtIndex:0] CGPointValue];		
+    CGPoint nextWorld = [fsm.actor.level tileToWorldCenter:nextTile];
+    fsm.actor.target = nextWorld;
+
+    CCAction* moveAction = [CCMoveTo actionWithDuration:0.25 
+                                               position:fsm.actor.target];
+    
+    CCNode* actorNode = (CCNode*)fsm.actor;
+    [actorNode runAction:moveAction];
+    
+    
 }
     
 -(void)update:(float)dt {
     NSMutableArray* path = fsm.actor.path;
     KALevel* level = fsm.actor.level;
+
+    // Get target from path
+    if (ccpFuzzyEqual(fsm.actor.position, fsm.actor.target, 1.0f)) {
+        // Actor has reached the target, pop that target and get the next one
+        [path removeObjectAtIndex:0];
+        if ([path count] > 0) {
+            CGPoint nextTile = [[path objectAtIndex:0] CGPointValue];		
+            CGPoint nextWorld = [level tileToWorldCenter:nextTile];
+            fsm.actor.target = nextWorld;
+         
+            NSLog(@"creating move action with target %@", NSStringFromCGPoint(fsm.actor.target));
+            
+            CCAction* moveAction = [CCMoveTo actionWithDuration:0.25
+                                                    position:fsm.actor.target];
+            
+            CCNode* actorNode = (CCNode*)fsm.actor;
+            [actorNode runAction:moveAction];
+        }
+    }
     
-    if (path != nil && [path count] > 0) {
-		// Are we close enough to the next path location? If so, remove it
-		CGPoint nextTile = [[path objectAtIndex:0] CGPointValue];		
-		CGPoint nextWorld = [level tileToWorldCenter:nextTile];
-		
-		if (ccpFuzzyEqual(fsm.actor.position, nextWorld, 5.0f)) {
-			[path removeObjectAtIndex:0];
-			
-			nextTile = [[path objectAtIndex:0] CGPointValue];
-			nextWorld = [level tileToWorldCenter:nextTile];
-		}
-		
-		fsm.actor.target = nextWorld;
-	}	
 }
     
 -(BOOL)updateTransitions:(float)dt {
+    if ([fsm.actor.path count] == 0) { // Reached final path target
+        [fsm changeStateWithClass:[KAStatePlayerIdle class]];
+        return YES;
+    }
+
     return [super updateTransitions:dt];
 }
 
