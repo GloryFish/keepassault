@@ -14,5 +14,11 @@
 @end
 
 @interface KAStatePlayerFollowPath : FSMState {
+    NSString* direction;
 }
+
+@property (nonatomic, retain) NSString* direction;
+
+-(NSString*)directionNameFromVector:(CGPoint)vector;
+
 @end

@@ -50,7 +50,7 @@
     CCSpriteBatchNode* spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"player_zwoptex.png"];
     [self addChild:spriteSheet];
     
-    animations = [NSMutableDictionary dictionaryWithCapacity:4];
+    self.animations = [NSMutableDictionary dictionaryWithCapacity:4];
     
     
     NSArray* directions = [NSArray arrayWithObjects:@"up", @"down", @"left", @"right", nil];
@@ -83,6 +83,13 @@
 
 -(void)playAnimation:(NSString *)animationName {
     // Set animation here
+    CCAnimation* animation = [animations objectForKey:animationName];
+    
+    if (animation != nil) {
+        [self.currentAnimationAction stop];
+        self.currentAnimationAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:animation restoreOriginalFrame:NO]];
+        [playerSprite runAction:currentAnimationAction];
+    }
 }
 
 -(void)update:(ccTime)dt {

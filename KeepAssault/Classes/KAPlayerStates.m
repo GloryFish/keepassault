@@ -41,7 +41,9 @@
 
 
 @implementation KAStatePlayerFollowPath
-    
+
+@synthesize direction;
+
 -(void)enter:(FSMState*)prevState {
     [super enter:prevState];
     NSLog(@"entered state: KAStatePlayerFollowPath");
@@ -49,6 +51,9 @@
     CGPoint nextTile = [[fsm.actor.path objectAtIndex:0] CGPointValue];		
     CGPoint nextWorld = [fsm.actor.level tileToWorldCenter:nextTile];
     fsm.actor.target = nextWorld;
+    
+    self.direction = [self directionNameFromVector:ccpSub(fsm.actor.target, fsm.actor.position)];
+    [fsm.actor playAnimation:[NSString stringWithFormat:@"walk_%@", self.direction]];
     
     NSLog(@"target is %@", NSStringFromCGPoint(fsm.actor.target));
 }
@@ -66,6 +71,15 @@
             CGPoint nextTile = [[path objectAtIndex:0] CGPointValue];		
             CGPoint nextWorld = [level tileToWorldCenter:nextTile];
             fsm.actor.target = nextWorld;
+            
+            // Update direction
+            NSString* newDirection = [self directionNameFromVector:ccpSub(fsm.actor.target, fsm.actor.position)];
+            
+            if (![newDirection isEqualToString:direction]) {
+                self.direction = newDirection;
+                [fsm.actor playAnimation:[NSString stringWithFormat:@"walk_%@", self.direction]];
+            }
+            
         }
     }
 
@@ -82,6 +96,26 @@
     }
 
     return [super updateTransitions:dt];
+}
+
+-(NSString*)directionNameFromVector:(CGPoint)vector {
+    if (CGPointEqualToPoint(vector, CGPointZero)) {
+        return @"down";
+    }
+    
+    if (fabs(vector.y) > fabs(vector.x)) {
+        if (vector.y > 0) {
+            return @"up";
+        } else {
+            return @"down";
+        }
+    } else {
+        if (vector.x > 0) {
+            return @"right";
+        } else {
+            return @"left";
+        }
+    }
 }
 
 @end
