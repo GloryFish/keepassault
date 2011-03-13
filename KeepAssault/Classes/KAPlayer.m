@@ -18,6 +18,7 @@
 @synthesize playerSprite;
 @synthesize animations;
 @synthesize currentDirection;
+
 -(id)init {
 	if ( (self = [super init]) ) {
 		speed = 256.0f;
@@ -25,10 +26,6 @@
         stateMachine = [[FSM alloc] initWithActor:self stateClass:[KAStatePlayerIdle class]];
         
         [self buildAnimations];
-        
-        // Set inital player state
-//        currentDirection = @"down";
-
         
 		[self scheduleUpdate];
 	}
@@ -40,7 +37,6 @@
     path = [newValue retain];
     
     [stateMachine changeStateWithClass:[KAStatePlayerFollowPath class]];
-    
 }
 
 // Called by init to prepare all of the animations needed by the Player
@@ -78,6 +74,7 @@
     
     // Set an initial player state
     playerSprite = [CCSprite spriteWithSpriteFrameName:@"player_stand_down.png"];
+    playerSprite.anchorPoint = ccp(0.5, 0.2);
     [spriteSheet addChild:playerSprite];
 }
 
