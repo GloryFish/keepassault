@@ -86,6 +86,9 @@
 		C98CDECC132AF030009EDBBC /* player_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = C98CDECB132AF030009EDBBC /* player_sheet.png */; };
 		C9A9C5CD132C393900235E78 /* player_zwoptex.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9A9C5CB132C393900235E78 /* player_zwoptex.plist */; };
 		C9A9C5CE132C393900235E78 /* player_zwoptex.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A9C5CC132C393900235E78 /* player_zwoptex.png */; };
+		C9A9C5D2132C4A0F00235E78 /* FSM.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A9C5D1132C4A0F00235E78 /* FSM.m */; };
+		C9A9C5D9132C4AA900235E78 /* FSMState.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A9C5D8132C4AA900235E78 /* FSMState.m */; };
+		C9A9C5DD132C4B3100235E78 /* KAPlayerStates.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A9C5DC132C4B3100235E78 /* KAPlayerStates.m */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -368,6 +371,13 @@
 		C98CDECB132AF030009EDBBC /* player_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_sheet.png; path = Images/player_sheet.png; sourceTree = "<group>"; };
 		C9A9C5CB132C393900235E78 /* player_zwoptex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = player_zwoptex.plist; path = Images/Player/player_zwoptex.plist; sourceTree = "<group>"; };
 		C9A9C5CC132C393900235E78 /* player_zwoptex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player_zwoptex.png; path = Images/Player/player_zwoptex.png; sourceTree = "<group>"; };
+		C9A9C5D1132C4A0F00235E78 /* FSM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSM.m; sourceTree = "<group>"; };
+		C9A9C5D3132C4A7600235E78 /* FSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSM.h; sourceTree = "<group>"; };
+		C9A9C5D7132C4AA900235E78 /* FSMState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMState.h; sourceTree = "<group>"; };
+		C9A9C5D8132C4AA900235E78 /* FSMState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSMState.m; sourceTree = "<group>"; };
+		C9A9C5DB132C4B3100235E78 /* KAPlayerStates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAPlayerStates.h; sourceTree = "<group>"; };
+		C9A9C5DC132C4B3100235E78 /* KAPlayerStates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAPlayerStates.m; sourceTree = "<group>"; };
+		C9A9C5DF132C4BFC00235E78 /* KAActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAActor.h; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -639,6 +649,8 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9A9C5DA132C4B1800235E78 /* Player */,
+				C9A9C5CF132C49CF00235E78 /* FSM */,
 				C96C759A13245CF400A238B8 /* AStar */,
 				C9859A601322E86600FAB918 /* TilemapTesting */,
 				E0F80F5D120A0182005866B8 /* GameConfig.h */,
@@ -648,6 +660,7 @@
 				E0F80F5F120A0182005866B8 /* RootViewController.m */,
 				1F3B9A2C0EF2145700286867 /* KeepAssaultAppDelegate.h */,
 				1F3B9A2B0EF2145700286867 /* KeepAssaultAppDelegate.m */,
+				C9A9C5DF132C4BFC00235E78 /* KAActor.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -823,8 +836,6 @@
 				C9859A851322F41100FAB918 /* KAFloor.m */,
 				C9859B37132302A100FAB918 /* KALayerHUD.h */,
 				C9859B38132302A100FAB918 /* KALayerHUD.m */,
-				C96C741F13234B6900A238B8 /* KAPlayer.h */,
-				C96C742013234B6900A238B8 /* KAPlayer.m */,
 				C96C74EA1324549800A238B8 /* KAReticle.h */,
 				C96C74EB1324549800A238B8 /* KAReticle.m */,
 			);
@@ -844,6 +855,28 @@
 			children = (
 				C9A9C5CB132C393900235E78 /* player_zwoptex.plist */,
 				C9A9C5CC132C393900235E78 /* player_zwoptex.png */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		C9A9C5CF132C49CF00235E78 /* FSM */ = {
+			isa = PBXGroup;
+			children = (
+				C9A9C5D3132C4A7600235E78 /* FSM.h */,
+				C9A9C5D1132C4A0F00235E78 /* FSM.m */,
+				C9A9C5D7132C4AA900235E78 /* FSMState.h */,
+				C9A9C5D8132C4AA900235E78 /* FSMState.m */,
+			);
+			name = FSM;
+			sourceTree = "<group>";
+		};
+		C9A9C5DA132C4B1800235E78 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				C96C741F13234B6900A238B8 /* KAPlayer.h */,
+				C96C742013234B6900A238B8 /* KAPlayer.m */,
+				C9A9C5DB132C4B3100235E78 /* KAPlayerStates.h */,
+				C9A9C5DC132C4B3100235E78 /* KAPlayerStates.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -1287,6 +1320,9 @@
 				C96C758313245C5600A238B8 /* AStar.m in Sources */,
 				C96C75DD1324618C00A238B8 /* ASPath.m in Sources */,
 				C96C75E8132462EB00A238B8 /* ASNode.m in Sources */,
+				C9A9C5D2132C4A0F00235E78 /* FSM.m in Sources */,
+				C9A9C5D9132C4AA900235E78 /* FSMState.m in Sources */,
+				C9A9C5DD132C4B3100235E78 /* KAPlayerStates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
